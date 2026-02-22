@@ -1,0 +1,13 @@
+# Source: noa.re
+apiVersion: v1
+kind: Service
+metadata:
+  name: noa-re
+  namespace: web
+spec:
+  selector:
+    app: noa-re
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
