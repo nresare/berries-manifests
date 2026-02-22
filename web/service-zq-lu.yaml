@@ -1,0 +1,13 @@
+# Source: zq.lu
+apiVersion: v1
+kind: Service
+metadata:
+  name: zq-lu
+  namespace: web
+spec:
+  selector:
+    app: zq-lu
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

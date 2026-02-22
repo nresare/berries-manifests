@@ -1,0 +1,16 @@
+# Source: zq.lu
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: zq-lu
+  namespace: web
+spec:
+  gatewayClassName: eg
+  listeners:
+  - name: zq-lu
+    protocol: HTTPS
+    hostname: zq.lu
+    port: 443
+    tls:
+      certificateRefs:
+      - name: zq-lu-tls
