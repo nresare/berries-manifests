@@ -7,6 +7,7 @@ metadata:
     app.kubernetes.io/name: surrealdb
     app.kubernetes.io/instance: surrealdb
     app.kubernetes.io/version: 2.3.7
+  namespace: surrealdb
 spec:
   containers:
   - name: test-isready
