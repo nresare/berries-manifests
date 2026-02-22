@@ -1,0 +1,15 @@
+# Source: surrealdb
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: surrealdb
+  labels:
+    app.kubernetes.io/name: surrealdb
+    app.kubernetes.io/instance: surrealdb
+    app.kubernetes.io/version: 2.3.7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
