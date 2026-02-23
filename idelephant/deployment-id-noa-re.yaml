@@ -19,6 +19,9 @@ spec:
       containers:
       - name: id-noa-re
         image: nresare/idelephant:latest
+        args:
+        - -c
+        - /config/idelephant.toml
         volumeMounts:
         - name: id-noa-re-config
           mountPath: /config
