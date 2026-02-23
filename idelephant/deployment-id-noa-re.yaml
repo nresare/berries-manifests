@@ -25,7 +25,17 @@ spec:
         volumeMounts:
         - name: id-noa-re-config
           mountPath: /config
+        - name: db-password
+          mountPath: /db-password
+        - name: email-password
+          mountPath: /email-password
       volumes:
       - name: id-noa-re-config
         configMap:
           name: id-noa-re-config
+      - name: db-password
+        secret:
+          secretName: db-password
+      - name: email-password
+        secret:
+          secretName: email-password
