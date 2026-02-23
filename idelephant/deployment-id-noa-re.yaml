@@ -1,0 +1,28 @@
+# Source: id.noa.re
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: id-noa-re
+  labels:
+    app: id-noa-re
+  namespace: idelephant
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: id-noa-re
+  template:
+    metadata:
+      labels:
+        app: id-noa-re
+    spec:
+      containers:
+      - name: id-noa-re
+        image: nresare/idelephant:latest
+        volumeMounts:
+        - name: id-noa-re-config
+          mountPath: /config
+      volumes:
+      - name: id-noa-re-config
+        configMap:
+          name: id-noa-re-config

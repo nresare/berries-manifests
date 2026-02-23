@@ -1,0 +1,16 @@
+# Source: id.noa.re
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: id-noa-re
+  namespace: idelephant
+spec:
+  gatewayClassName: eg
+  listeners:
+  - name: id-noa-re
+    protocol: HTTPS
+    hostname: id.noa.re
+    port: 443
+    tls:
+      certificateRefs:
+      - name: id-noa-re-tls
