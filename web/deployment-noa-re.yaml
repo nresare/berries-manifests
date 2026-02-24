@@ -19,7 +19,10 @@ spec:
         app: noa-re
     spec:
       containers:
-      - name: web
+      - env:
+        - name: SERVER_PORT
+          value: '8080'
+        name: web
         image: ghcr.io/static-web-server/static-web-server:2.36.1
         volumeMounts:
         - mountPath: /public
@@ -35,7 +38,7 @@ spec:
           if [ ! -d /src/.git ]; then
             git clone https://github.com/nresare/noa.re --recurse-submodules --depth=1 /src
           else
-            git pull --recurse-submodules
+            git pull https://github.com/nresare/noa.re --recurse-submodules
           fi
         volumeMounts:
         - mountPath: /src
