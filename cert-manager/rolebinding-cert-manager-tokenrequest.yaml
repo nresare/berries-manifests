@@ -2,14 +2,14 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: cert-manager-cert-manager-tokenrequest
+  name: cert-manager-tokenrequest
   namespace: cert-manager
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/instance: cert-manager
     app.kubernetes.io/component: controller
-    app.kubernetes.io/version: v1.18.2
+    app.kubernetes.io/version: v1.19.4
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
