@@ -1,0 +1,16 @@
+# Source: teleport-kube-agent
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: teleport-kube-agent
+  namespace: teleport
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - create
+  - get
+  - update
+  - patch

@@ -1,0 +1,41 @@
+# Source: teleport-kube-agent
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: teleport-kube-agent-delete-hook
+  namespace: teleport
+spec:
+  template:
+    metadata:
+      name: teleport-kube-agent-delete-hook
+      labels:
+        app: teleport-kube-agent
+    spec:
+      serviceAccountName: teleport-kube-agent-delete-hook
+      restartPolicy: OnFailure
+      containers:
+      - name: post-delete-job
+        env:
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: RELEASE_NAME
+          value: teleport-kube-agent
+        image: public.ecr.aws/gravitational/teleport-distroless:18.2.2
+        imagePullPolicy: IfNotPresent
+        command:
+        - teleport
+        args:
+        - kube-state
+        - delete
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 9807
+          seccompProfile:
+            type: RuntimeDefault

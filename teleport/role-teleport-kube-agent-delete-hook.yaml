@@ -1,0 +1,15 @@
+# Source: teleport-kube-agent
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: teleport-kube-agent-delete-hook
+  namespace: teleport
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - delete
+  - list
