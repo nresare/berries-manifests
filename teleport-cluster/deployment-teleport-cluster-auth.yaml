@@ -1,0 +1,141 @@
+# Source: teleport-cluster
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teleport-cluster-auth
+  namespace: teleport-cluster
+  labels:
+    app.kubernetes.io/name: teleport-cluster
+    app.kubernetes.io/instance: teleport-cluster
+    app.kubernetes.io/component: auth
+    app.kubernetes.io/version: 18.2.2
+    teleport.dev/majorVersion: '18'
+    app: teleport-cluster
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: teleport-cluster
+      app.kubernetes.io/instance: teleport-cluster
+      app.kubernetes.io/component: auth
+  template:
+    metadata:
+      annotations:
+        checksum/config: 21f853f1f7e2b8ced3af00338c18f905930775a8397d2551a9923fa634e5b714
+      labels:
+        app.kubernetes.io/name: teleport-cluster
+        app.kubernetes.io/instance: teleport-cluster
+        app.kubernetes.io/component: auth
+        app.kubernetes.io/version: 18.2.2
+        teleport.dev/majorVersion: '18'
+        app: teleport-cluster
+    spec:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: teleport-cluster
+            app.kubernetes.io/instance: teleport-cluster
+            app.kubernetes.io/component: auth
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: teleport-cluster
+            app.kubernetes.io/instance: teleport-cluster
+            app.kubernetes.io/component: auth
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/instance
+                operator: In
+                values:
+                - teleport-cluster
+              - key: app.kubernetes.io/component
+                operator: In
+                values:
+                - auth
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: teleport
+        image: public.ecr.aws/gravitational/teleport-distroless:18.2.2
+        imagePullPolicy: IfNotPresent
+        args:
+        - --diag-addr=0.0.0.0:3000
+        - --apply-on-startup=/etc/teleport/apply-on-startup.yaml
+        ports:
+        - name: diag
+          containerPort: 3000
+          protocol: TCP
+        - name: auth
+          containerPort: 3025
+          protocol: TCP
+        - name: kube
+          containerPort: 3026
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: diag
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 6
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: diag
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 12
+          successThreshold: 1
+          timeoutSeconds: 5
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - teleport
+              - wait
+              - duration
+              - 30s
+        volumeMounts:
+        - mountPath: /etc/teleport
+          name: config
+          readOnly: true
+        - mountPath: /var/lib/teleport
+          name: data
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: auth-serviceaccount-token
+          readOnly: true
+      automountServiceAccountToken: false
+      volumes:
+      - name: auth-serviceaccount-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              path: token
+          - configMap:
+              items:
+              - key: ca.crt
+                path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+              - path: namespace
+                fieldRef:
+                  fieldPath: metadata.namespace
+      - name: config
+        configMap:
+          name: teleport-cluster-auth
+      - name: data
+        persistentVolumeClaim:
+          claimName: teleport-cluster
+      serviceAccountName: teleport-cluster
+      terminationGracePeriodSeconds: 60

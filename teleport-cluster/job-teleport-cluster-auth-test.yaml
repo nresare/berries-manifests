@@ -1,0 +1,46 @@
+# Source: teleport-cluster
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: teleport-cluster-auth-test
+  namespace: teleport-cluster
+  labels:
+    app.kubernetes.io/name: teleport-cluster
+    app.kubernetes.io/instance: teleport-cluster
+    app.kubernetes.io/version: 18.2.2
+    teleport.dev/majorVersion: '18'
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: teleport-cluster
+        app.kubernetes.io/instance: teleport-cluster
+        app.kubernetes.io/component: auth
+        app.kubernetes.io/version: 18.2.2
+        teleport.dev/majorVersion: '18'
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: teleport-config-check
+        image: public.ecr.aws/gravitational/teleport-distroless:18.2.2
+        imagePullPolicy: IfNotPresent
+        command:
+        - teleport
+        - configure
+        args:
+        - --test
+        - /etc/teleport/teleport.yaml
+        volumeMounts:
+        - mountPath: /etc/teleport
+          name: config
+          readOnly: true
+        - mountPath: /var/lib/teleport
+          name: data
+      volumes:
+      - name: config
+        configMap:
+          name: teleport-cluster-auth-test
+      - name: data
+        emptyDir: {}
+      serviceAccountName: teleport-cluster-hook

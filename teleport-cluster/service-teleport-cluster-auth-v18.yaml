@@ -1,0 +1,20 @@
+# Source: teleport-cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: teleport-cluster-auth-v18
+  namespace: teleport-cluster
+  labels:
+    app.kubernetes.io/name: teleport-cluster
+    app.kubernetes.io/instance: teleport-cluster
+    app.kubernetes.io/component: auth
+    app.kubernetes.io/version: 18.2.2
+    teleport.dev/majorVersion: '18'
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app.kubernetes.io/name: teleport-cluster
+    app.kubernetes.io/instance: teleport-cluster
+    app.kubernetes.io/component: auth
+    teleport.dev/majorVersion: '18'
