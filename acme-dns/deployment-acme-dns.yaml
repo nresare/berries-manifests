@@ -27,7 +27,7 @@ spec:
           name: acme-dns-config
       initContainers:
       - name: fix-db-permissions
-        image: alpine:3.22.1
+        image: alpine:3.23.3
         command:
         - sh
         - -c
