@@ -7,7 +7,7 @@ metadata:
   labels:
     app.kubernetes.io/name: gateway-helm
     app.kubernetes.io/instance: envoy-gateway
-    app.kubernetes.io/version: v1.3.3
+    app.kubernetes.io/version: v1.7.0
 spec:
   backoffLimit: 1
   completions: 1
@@ -29,7 +29,7 @@ spec:
               fieldPath: metadata.namespace
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: cluster.local
-        image: docker.io/envoyproxy/gateway:v1.3.3
+        image: docker.io/envoyproxy/gateway:v1.7.0
         imagePullPolicy: IfNotPresent
         name: envoy-gateway-certgen
         securityContext:
@@ -39,9 +39,9 @@ spec:
             - ALL
           privileged: false
           readOnlyRootFilesystem: true
-          runAsGroup: 65534
+          runAsGroup: 65532
           runAsNonRoot: true
-          runAsUser: 65534
+          runAsUser: 65532
           seccompProfile:
             type: RuntimeDefault
       imagePullSecrets: []

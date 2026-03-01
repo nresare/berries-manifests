@@ -8,8 +8,9 @@ metadata:
     control-plane: envoy-gateway
     app.kubernetes.io/name: gateway-helm
     app.kubernetes.io/instance: envoy-gateway
-    app.kubernetes.io/version: v1.3.3
+    app.kubernetes.io/version: v1.7.0
 spec:
+  type: ClusterIP
   selector:
     control-plane: envoy-gateway
     app.kubernetes.io/name: gateway-helm
@@ -27,3 +28,6 @@ spec:
   - name: metrics
     port: 19001
     targetPort: 19001
+  - name: webhook
+    port: 9443
+    targetPort: 9443
