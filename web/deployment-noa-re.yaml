@@ -30,7 +30,7 @@ spec:
           readOnly: true
       initContainers:
       - name: git
-        image: alpine/git:2.47.2
+        image: alpine/git:v2.52.0
         command:
         - /bin/sh
         - -c
