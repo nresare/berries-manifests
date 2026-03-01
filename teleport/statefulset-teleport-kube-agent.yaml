@@ -22,10 +22,23 @@ spec:
       securityContext:
         fsGroup: 9807
       terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: teleport-kube-agent
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: teleport-kube-agent
       serviceAccountName: teleport-kube-agent
       containers:
       - name: teleport
-        image: public.ecr.aws/gravitational/teleport-distroless:18.2.2
+        image: public.ecr.aws/gravitational/teleport-distroless:18.7.1
         imagePullPolicy: IfNotPresent
         env:
         - name: TELEPORT_INSTALL_METHOD_HELM_KUBE_AGENT
