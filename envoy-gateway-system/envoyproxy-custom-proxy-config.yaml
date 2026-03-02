@@ -11,3 +11,4 @@ spec:
     kubernetes:
       envoyService:
         type: NodePort
+        externalTrafficPolicy: Cluster
