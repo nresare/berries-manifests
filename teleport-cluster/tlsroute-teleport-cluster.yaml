@@ -1,5 +1,5 @@
 # Source: teleport-cluster
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1alpha3
 kind: TLSRoute
 metadata:
   name: teleport-cluster
@@ -7,8 +7,8 @@ metadata:
 spec:
   parentRefs:
   - name: teleport-cluster
-  - group: gateway.networking.k8s.io
-  - kind: Gateway
+    group: gateway.networking.k8s.io
+    kind: Gateway
   hostnames:
   - teleport.noa.re
   - '*.teleport.noa.re'
