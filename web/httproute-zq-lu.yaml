@@ -7,9 +7,18 @@ metadata:
 spec:
   parentRefs:
   - name: zq-lu
+    group: gateway.networking.k8s.io
+    kind: Gateway
   hostnames:
   - zq.lu
   rules:
   - backendRefs:
     - name: zq-lu
       port: 80
+      group: ''
+      kind: Service
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /

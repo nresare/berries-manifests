@@ -7,9 +7,18 @@ metadata:
 spec:
   parentRefs:
   - name: id-noa-re
+    group: gateway.networking.k8s.io
+    kind: Gateway
   hostnames:
   - id.noa.re
   rules:
   - backendRefs:
     - name: id-noa-re
       port: 80
+      group: ''
+      kind: Service
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /

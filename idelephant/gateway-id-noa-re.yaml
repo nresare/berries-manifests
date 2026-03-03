@@ -14,3 +14,5 @@ spec:
     tls:
       certificateRefs:
       - name: id-noa-re-tls
+        group: ''
+        kind: Secret

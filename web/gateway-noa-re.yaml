@@ -14,6 +14,8 @@ spec:
     tls:
       certificateRefs:
       - name: noa-re-tls
+        group: ''
+        kind: Secret
   - name: nadia-resare-com
     protocol: HTTPS
     hostname: nadia.resare.com
@@ -21,3 +23,5 @@ spec:
     tls:
       certificateRefs:
       - name: noa-re-extra-tls
+        group: ''
+        kind: Secret
