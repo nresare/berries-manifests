@@ -4,7 +4,7 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
   annotations:
-    noa-was-here: yup
+    noa-was-here: and ben too
   namespace: cert-manager
 spec:
   acme:
