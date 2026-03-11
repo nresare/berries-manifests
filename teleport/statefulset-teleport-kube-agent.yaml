@@ -38,7 +38,7 @@ spec:
       serviceAccountName: teleport-kube-agent
       containers:
       - name: teleport
-        image: public.ecr.aws/gravitational/teleport-distroless:18.7.2
+        image: public.ecr.aws/gravitational/teleport-distroless:18.7.3
         imagePullPolicy: IfNotPresent
         env:
         - name: TELEPORT_INSTALL_METHOD_HELM_KUBE_AGENT
