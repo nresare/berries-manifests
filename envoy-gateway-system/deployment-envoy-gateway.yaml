@@ -8,7 +8,7 @@ metadata:
     control-plane: envoy-gateway
     app.kubernetes.io/name: gateway-helm
     app.kubernetes.io/instance: envoy-gateway
-    app.kubernetes.io/version: v1.7.0
+    app.kubernetes.io/version: v1.7.1
 spec:
   replicas: 1
   selector:
@@ -38,7 +38,7 @@ spec:
               fieldPath: metadata.namespace
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: cluster.local
-        image: docker.io/envoyproxy/gateway:v1.7.0
+        image: docker.io/envoyproxy/gateway:v1.7.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
