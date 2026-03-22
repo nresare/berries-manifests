@@ -19,9 +19,6 @@ spec:
       containers:
       - name: demo-resare-com
         image: nresare/oidc-client-demo:latest
-        args:
-        - -c
-        - /config/config.toml
         volumeMounts:
         - name: demo-resare-com-config
           mountPath: /config
