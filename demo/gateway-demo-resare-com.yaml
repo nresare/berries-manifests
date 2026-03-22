@@ -1,0 +1,18 @@
+# Source: demo.resare.com
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: demo-resare-com
+  namespace: demo
+spec:
+  gatewayClassName: eg
+  listeners:
+  - name: demo-resare-com
+    protocol: HTTPS
+    hostname: demo.resare.com
+    port: 443
+    tls:
+      certificateRefs:
+      - name: demo-resare-com-tls
+        group: ''
+        kind: Secret

@@ -1,0 +1,13 @@
+# Source: demo.resare.com
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-resare-com
+  namespace: demo
+spec:
+  selector:
+    app: demo-resare-com
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

@@ -1,0 +1,31 @@
+# Source: demo.resare.com
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-resare-com
+  labels:
+    app: demo-resare-com
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-resare-com
+  template:
+    metadata:
+      labels:
+        app: demo-resare-com
+    spec:
+      containers:
+      - name: demo-resare-com
+        image: nresare/oidc-client-demo:latest
+        args:
+        - -c
+        - /config/config.toml
+        volumeMounts:
+        - name: demo-resare-com-config
+          mountPath: /config
+      volumes:
+      - name: demo-resare-com-config
+        configMap:
+          name: demo-resare-com-config

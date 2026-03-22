@@ -27,6 +27,8 @@ spec:
           name: acme-dns-config
       initContainers:
       - name: fix-db-permissions
+        securityContext:
+          allowPrivilegeEscalation: false
         image: alpine:3.23.3
         command:
         - sh
@@ -37,6 +39,8 @@ spec:
           name: db
       containers:
       - name: acme-dns
+        securityContext:
+          allowPrivilegeEscalation: false
         image: nresare/acme-dns:v1.1-distroless
         volumeMounts:
         - mountPath: /db
