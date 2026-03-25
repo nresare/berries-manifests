@@ -58,9 +58,22 @@ spec:
             port: http
         resources: {}
         volumeMounts:
-        - name: data
+        - &id001
+          name: data
           mountPath: /data
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: surrealdb
+      initContainers:
+      - name: fix-permissions
+        image: alpine:3.23.3
+        command:
+        - /bin/sh
+        - -c
+        - |
+          mkdir -p /data/db &&
+          chown 65532:65532 /data/db &&
+          chmod u+rwx /data/db
+        volumeMounts:
+        - *id001
