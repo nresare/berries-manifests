@@ -44,7 +44,7 @@ spec:
         - mountPath: /src
           name: src
       - name: hugo
-        image: floryn90/hugo:0.159.0
+        image: floryn90/hugo:0.159.1
         volumeMounts:
         - mountPath: /src
           name: src
