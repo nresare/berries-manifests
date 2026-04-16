@@ -16,7 +16,7 @@ data:
     [[mapping]]
     name = "idelephant"
     allowed_subjects = ["system:serviceaccount:idelephant:idelephant"]
-    [mappnig.additional_claims]
+    [[mappnig.additional_claims]]
     ns = "default"
     db = "idelephant"
     sub = "idelephant"
