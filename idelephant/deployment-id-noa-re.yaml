@@ -29,6 +29,9 @@ spec:
           mountPath: /db-password
         - name: email-password
           mountPath: /email-password
+        - name: tokens
+          mountPath: /var/run/secrets/tokens
+          readOnly: true
       volumes:
       - name: id-noa-re-config
         configMap:
@@ -39,3 +42,10 @@ spec:
       - name: email-password
         secret:
           secretName: email-password
+      - name: tokens
+        projected:
+          sources:
+          - serviceAccountToken:
+              path: custom-token
+              expirationSeconds: 3600
+              audience: idmouse
