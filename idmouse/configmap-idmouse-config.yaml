@@ -19,11 +19,5 @@ data:
     [[mappnig.additional_claims]]
     ns = "default"
     db = "idelephant"
-    sub = "idelephant"
-    ac = "token_name"
-    id = "idelephant"
-
-    [[mapping]]
-    name = "some_other_mapping"
-    allowed_subjects = ["system:serviceaccount:default:default"]
-    additional_claims = { ns = "ns_name", db = "foo" }
+    ac = "idelephant"
+    rl = ["Editor"]
