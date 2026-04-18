@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: id-noa-re
-        image: packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.19-g85d4992
+        image: packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.20-g917aef2
         args:
         - -c
         - /config/idelephant.toml
@@ -46,6 +46,6 @@ spec:
         projected:
           sources:
           - serviceAccountToken:
-              path: custom-token
+              path: idmouse
               expirationSeconds: 3600
               audience: idmouse
