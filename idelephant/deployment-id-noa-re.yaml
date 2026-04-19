@@ -15,6 +15,8 @@ spec:
     metadata:
       labels:
         app: id-noa-re
+      annotations:
+        checksum/config: ae45c28a7420ac1a312ab80e918ce430f5c6f4c918efb4d2fb6942a669338ff9
     spec:
       containers:
       - name: id-noa-re

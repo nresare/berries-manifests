@@ -15,6 +15,8 @@ spec:
     metadata:
       labels:
         app: demo-resare-com
+      annotations:
+        checksum/config: ac7e704258da1c1aef9c513ca3069daf50cebac76cd7a2039f997b9296dba313
     spec:
       containers:
       - name: demo-resare-com
