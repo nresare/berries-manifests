@@ -16,7 +16,7 @@ spec:
       labels:
         app: idmouse
       annotations:
-        checksum/config: c65f559615d12255d4a6024e7ccfd93073f4e7d75e777d50e96c5f27bf7937ae
+        checksum/config: 72a5c0c3e3b602104ba99a454f15ebe4d7a3bb0acd7fbf91fab269e0f4e47b7b
     spec:
       containers:
       - name: idmouse
