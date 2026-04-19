@@ -15,11 +15,9 @@ spec:
     metadata:
       labels:
         app: idmouse
+      annotations:
+        checksum/config: c65f559615d12255d4a6024e7ccfd93073f4e7d75e777d50e96c5f27bf7937ae
     spec:
-      volumes:
-      - name: config
-        configMap:
-          name: idmouse-config
       containers:
       - name: idmouse
         securityContext:
@@ -29,5 +27,9 @@ spec:
         - name: http
           containerPort: 8080
         volumeMounts:
-        - mountPath: /config
-          name: config
+        - name: idmouse-config
+          mountPath: /config
+      volumes:
+      - name: idmouse-config
+        configMap:
+          name: idmouse-config

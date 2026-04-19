@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: acme-dns-config
+  name: acme-dns-etc-acme-dns
   namespace: acme-dns
 data:
   config.cfg: |
