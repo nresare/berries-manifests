@@ -45,7 +45,7 @@ spec:
         - name: SURREAL_UNAUTHENTICATED
           value: 'false'
         - name: SURREAL_CAPS_ALLOW_NET
-          value: idmouse.idmouse.svc:80
+          value: idmouse.idmouse.svc
         ports:
         - name: http
           containerPort: 8000
