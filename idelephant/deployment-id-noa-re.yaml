@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: id-noa-re
-        image: packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.20-g7762203
+        image: packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.21-g9cb8879
         args:
         - -c
         - /config/idelephant.toml
