@@ -16,7 +16,7 @@ spec:
       labels:
         app: id-noa-re
       annotations:
-        checksum/config: ae45c28a7420ac1a312ab80e918ce430f5c6f4c918efb4d2fb6942a669338ff9
+        checksum/config: 7f52e7374cde436aa379218fcf0ee9aa1ebe0defbacf9d01a4dba10a4f1af1a3
     spec:
       containers:
       - name: id-noa-re
