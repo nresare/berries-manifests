@@ -37,7 +37,7 @@ spec:
         - name: SURREAL_PATH
           value: surrealkv://data/db
         - name: SURREAL_LOG
-          value: info
+          value: debug
         - name: SURREAL_BIND
           value: 0.0.0.0:8000
         - name: SURREAL_AUTH
