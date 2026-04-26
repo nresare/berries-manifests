@@ -1,0 +1,13 @@
+# Source: idcat.noa.re
+apiVersion: v1
+kind: Service
+metadata:
+  name: idcat-noa-re
+  namespace: idcat
+spec:
+  selector:
+    app: idcat-noa-re
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

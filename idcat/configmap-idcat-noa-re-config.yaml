@@ -1,0 +1,20 @@
+# Source: idcat.noa.re
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: idcat-noa-re-config
+  namespace: idcat
+data:
+  idcat.toml: |
+    bind_address = "0.0.0.0:8080"
+    github_app_id = 3511383
+    private_key_directory = "/app-keys"
+
+    [authentication]
+    audience = "idcat.noa.re"
+    issuer = "https://agent.buildkite.com"
+
+    [[installation]]
+    required_claims = {organization_slug="nresare", pipeline_slug="berries-config"}
+    repo = "nresare/berries-config"
+    secret_key = "nresare-buildsystem.key"

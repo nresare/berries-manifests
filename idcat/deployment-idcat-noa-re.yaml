@@ -1,0 +1,35 @@
+# Source: idcat.noa.re
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idcat-noa-re
+  labels:
+    app: idcat-noa-re
+  namespace: idcat
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: idcat-noa-re
+  template:
+    metadata:
+      labels:
+        app: idcat-noa-re
+      annotations:
+        checksum/config: 0ee232f23031787ef6f1754701e5652c2bdf1bcafa358fabae34bdde56954277
+    spec:
+      containers:
+      - name: idcat-noa-re
+        image: packages.buildkite.com/nresare/idcat/idcat:0.1.0-ed2d425c
+        volumeMounts:
+        - name: idcat-noa-re-config
+          mountPath: /config
+        - name: app-keys
+          mountPath: /app-keys
+      volumes:
+      - name: idcat-noa-re-config
+        configMap:
+          name: idcat-noa-re-config
+      - name: app-keys
+        secret:
+          secretName: app-keys

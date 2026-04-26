@@ -1,0 +1,16 @@
+# Source: idcat.noa.re
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: idcat-noa-re
+  namespace: idcat
+spec:
+  dnsNames:
+  - idcat.noa.re
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: ECDSA
+    rotationPolicy: Always
+  secretName: idcat-noa-re-tls
