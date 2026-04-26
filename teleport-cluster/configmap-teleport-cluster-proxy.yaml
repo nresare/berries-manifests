@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: teleport-cluster
     app.kubernetes.io/instance: teleport-cluster
     app.kubernetes.io/component: proxy
-    app.kubernetes.io/version: 18.7.4
+    app.kubernetes.io/version: 18.7.5
     teleport.dev/majorVersion: '18'
 data:
   teleport.yaml: |

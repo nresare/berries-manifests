@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: teleport-cluster
     app.kubernetes.io/instance: teleport-cluster
     app.kubernetes.io/component: proxy
-    app.kubernetes.io/version: 18.7.4
+    app.kubernetes.io/version: 18.7.5
     teleport.dev/majorVersion: '18'
 spec:
   replicas: 2
@@ -21,12 +21,12 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: 829098b92bf87c77ebe9864870660b368eb94939824b484556bd6bcbb98e5ce1
+        checksum/config: ecb5d382eada9376367126bc21ef3be7d650f82223ff65c445c4aae264e405b5
       labels:
         app.kubernetes.io/name: teleport-cluster
         app.kubernetes.io/instance: teleport-cluster
         app.kubernetes.io/component: proxy
-        app.kubernetes.io/version: 18.7.4
+        app.kubernetes.io/version: 18.7.5
         teleport.dev/majorVersion: '18'
     spec:
       topologySpreadConstraints:
@@ -62,7 +62,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       initContainers:
       - name: wait-auth-update
-        image: public.ecr.aws/gravitational/teleport-distroless:18.7.4
+        image: public.ecr.aws/gravitational/teleport-distroless:18.7.5
         command:
         - teleport
         - wait
@@ -70,7 +70,7 @@ spec:
         - teleport-cluster-auth-v17.teleport-cluster.svc.cluster.local
       containers:
       - name: teleport
-        image: public.ecr.aws/gravitational/teleport-distroless:18.7.4
+        image: public.ecr.aws/gravitational/teleport-distroless:18.7.5
         imagePullPolicy: IfNotPresent
         args:
         - --diag-addr=0.0.0.0:3000
