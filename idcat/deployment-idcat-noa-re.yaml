@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: idcat-noa-re
-        image: packages.buildkite.com/nresare/idcat/idcat:0.1.0-cbc3d1cf
+        image: packages.buildkite.com/nresare/idcat/idcat:0.1.0-426f845b
         args:
         - --debug
         volumeMounts:
