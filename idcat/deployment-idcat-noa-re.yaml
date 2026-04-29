@@ -16,7 +16,7 @@ spec:
       labels:
         app: idcat-noa-re
       annotations:
-        checksum/config: 0ee232f23031787ef6f1754701e5652c2bdf1bcafa358fabae34bdde56954277
+        checksum/config: 87c33ea23def1ba5693bdf229f3f2a3ad346975e7b9fc1bdc0a646887366e588
     spec:
       containers:
       - name: idcat-noa-re
