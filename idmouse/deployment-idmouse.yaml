@@ -1,0 +1,36 @@
+# Source: idmouse
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idmouse
+  labels:
+    app: idmouse
+  namespace: idmouse
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: idmouse
+  template:
+    metadata:
+      labels:
+        app: idmouse
+      annotations:
+        checksum/config: c70b76250338c7ede045adf7ce4e233e703c4e5ec9719d09a4e3c9974fd14759
+    spec:
+      serviceAccountName: idmouse
+      containers:
+      - name: idmouse
+        securityContext:
+          allowPrivilegeEscalation: false
+        image: packages.buildkite.com/nresare/idmouse/idmouse:0.2.1-9003cca4
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: idmouse-config
+          mountPath: /config
+      volumes:
+      - name: idmouse-config
+        configMap:
+          name: idmouse-config
