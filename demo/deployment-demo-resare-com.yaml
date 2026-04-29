@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: demo-resare-com
-        image: packages.buildkite.com/nresare/oidc-client-demo/oidc-client-demo:0.1.0-3b20df74
+        image: packages.buildkite.com/nresare/oidc-client-demo/oidc-client-demo:0.1.0-f17a7e9f
         volumeMounts:
         - name: demo-resare-com-config
           mountPath: /config
