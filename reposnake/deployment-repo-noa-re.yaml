@@ -21,6 +21,9 @@ spec:
       containers:
       - name: repo-noa-re
         image: nresare/reposnake:latest
+        args:
+        - -c
+        - /config/reposnake.toml
         volumeMounts:
         - name: repo-noa-re-config
           mountPath: /config
