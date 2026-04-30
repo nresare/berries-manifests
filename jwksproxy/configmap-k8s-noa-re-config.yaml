@@ -1,0 +1,9 @@
+# Source: k8s.noa.re
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-noa-re-config
+  namespace: jwksproxy
+data:
+  jwksproxy.toml: |
+    origin = "k8s.noa.re"

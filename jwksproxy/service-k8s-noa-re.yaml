@@ -1,0 +1,13 @@
+# Source: k8s.noa.re
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-noa-re
+  namespace: jwksproxy
+spec:
+  selector:
+    app: k8s-noa-re
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
