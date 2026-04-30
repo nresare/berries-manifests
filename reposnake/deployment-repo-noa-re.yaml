@@ -15,14 +15,21 @@ spec:
     metadata:
       labels:
         app: repo-noa-re
+      annotations:
+        checksum/config: 48456743fdb584f88b8263fae7d1eb0a518b2639bef01c9baf632e92055c8621
     spec:
       containers:
       - name: repo-noa-re
         image: nresare/reposnake:latest
         volumeMounts:
+        - name: repo-noa-re-config
+          mountPath: /config
         - name: data
           mountPath: /data
       volumes:
+      - name: repo-noa-re-config
+        configMap:
+          name: repo-noa-re-config
       - name: data
         persistentVolumeClaim:
           claimName: repo-noa-re-data
