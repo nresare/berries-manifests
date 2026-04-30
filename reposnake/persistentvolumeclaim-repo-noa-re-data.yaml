@@ -1,0 +1,12 @@
+# Source: repo.noa.re
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: repo-noa-re-data
+  namespace: reposnake
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
