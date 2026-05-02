@@ -21,9 +21,7 @@ spec:
       serviceAccountName: idmouse
       containers:
       - name: idmouse
-        securityContext:
-          allowPrivilegeEscalation: false
-        image: packages.buildkite.com/nresare/idmouse/idmouse:0.2.1-9003cca4
+        image: nresare/idmouse:latest
         ports:
         - name: http
           containerPort: 8080

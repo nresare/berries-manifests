@@ -5,6 +5,7 @@ metadata:
   name: idmouse
   namespace: idmouse
 spec:
+  type: ClusterIP
   selector:
     app: idmouse
   ports:
