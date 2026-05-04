@@ -16,11 +16,11 @@ spec:
       labels:
         app: idcat-noa-re
       annotations:
-        checksum/config: 87c33ea23def1ba5693bdf229f3f2a3ad346975e7b9fc1bdc0a646887366e588
+        checksum/config: 2150cea35d3b2c0dc87c9fb7ac3f540e624a909e77976452389b63ebeb33a3cd
     spec:
       containers:
       - name: idcat-noa-re
-        image: packages.buildkite.com/nresare/idcat/idcat:0.1.0-426f845b
+        image: nresare/idcat:0.2.0
         args:
         - --debug
         volumeMounts:
