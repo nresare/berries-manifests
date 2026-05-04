@@ -12,7 +12,7 @@ data:
 
     [authentication]
     audience = "idmouse"
-    issuer = "https://kubernetes.default.svc"
+    issuer = "https://k8s.noa.re"
 
     [[mapping]]
     name = "idelephant"
