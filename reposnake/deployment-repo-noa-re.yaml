@@ -8,8 +8,6 @@ metadata:
   namespace: reposnake
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
       app: repo-noa-re
@@ -18,11 +16,11 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: update identity provider 
+        checksum/config: 3e353e07759c3c510b03b2215a86f74a7876277a96e2e11cca0bdbe56c1b293a
     spec:
       containers:
       - name: repo-noa-re
-        image: nresare/reposnake:0.1.2
+        image: nresare/reposnake:0.1.3
         args:
         - -c
         - /config/reposnake.toml
