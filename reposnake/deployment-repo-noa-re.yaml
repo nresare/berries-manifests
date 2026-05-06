@@ -18,7 +18,7 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: somethingelse
+        checksum/config: update identity provider 
     spec:
       containers:
       - name: repo-noa-re
