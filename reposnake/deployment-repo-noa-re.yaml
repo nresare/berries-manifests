@@ -16,7 +16,7 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: 82aa937e3e648ee9b6e905dc87517c49d47281730939e119eb1bb3b84c39c3aa
+        checksum/config: 1c6aaf06c78453a9b52beb58f7d96016a585d28bbc2f7de61e98e456695c78eb
     spec:
       containers:
       - name: repo-noa-re
@@ -29,6 +29,9 @@ spec:
           mountPath: /config
         - name: data
           mountPath: /data
+        - name: tokens
+          mountPath: /var/run/secrets/tokens
+          readOnly: true
       volumes:
       - name: repo-noa-re-config
         configMap:
@@ -36,6 +39,13 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: repo-noa-re-data
+      - name: tokens
+        projected:
+          sources:
+          - serviceAccountToken:
+              path: idmouse
+              expirationSeconds: 3600
+              audience: idmouse
       initContainers:
       - name: fix-data-permissions
         image: alpine:3.23.4
