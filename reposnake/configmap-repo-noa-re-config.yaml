@@ -33,9 +33,9 @@ data:
     identity-provider = "kubernetes"
 
     [object-store]
-    backend = "filesystem"
+    backend = "s3"
     bucket = "repo-noa-re"
-    directory = "/data"
+    # directory = "/data"
 
     [persistence]
     uri = "ws://surrealdb.surrealdb:8000"
