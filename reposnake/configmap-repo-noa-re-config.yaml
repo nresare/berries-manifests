@@ -6,8 +6,8 @@ metadata:
   namespace: reposnake
 data:
   reposnake.toml: |
-    bind_address = "0.0.0.0:8080"
-    max_upload_bytes = 104857600
+    bind-address = "0.0.0.0:8080"
+    max-upload-bytes = 104857600
 
     [[identity-provider]]
     name = "kubernetes"
@@ -23,13 +23,13 @@ data:
     [[publisher]]
     name = "ci"
     projects = ["*"]
-    required_claims = {organization_slug="nresare"}
+    required-claims = {organization_slug="nresare"}
     identity-provider = "buildkite"
 
     [[publisher]]
     name = "manual"
     projects = ["*"]
-    required_claims = {sub="system:serviceaccount:default:default"}
+    required-claims = {sub="system:serviceaccount:default:default"}
     identity-provider = "kubernetes"
 
     [object-store]
@@ -42,4 +42,4 @@ data:
 
     [persistence.idmouse]
     url = "http://idmouse.idmouse.svc/token/reposnake"
-    token_path = "/var/run/secrets/tokens/idmouse"
+    token-path = "/var/run/secrets/tokens/idmouse"
