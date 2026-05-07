@@ -32,7 +32,7 @@ spec:
         - name: AWS_STS_REGIONAL_ENDPOINTS
           value: regional
         - name: AWS_WEB_IDENTITY_TOKEN_FILE
-          value: /var/run/secrets/tokens/sts.amazonaws.com
+          value: /var/run/secrets/kubernetes.io/serviceaccount/token
         volumeMounts:
         - name: repo-noa-re-config
           mountPath: /config
@@ -54,10 +54,6 @@ spec:
               path: idmouse
               expirationSeconds: 3600
               audience: idmouse
-          - serviceAccountToken:
-              path: sts.amazonaws.com
-              expirationSeconds: 3600
-              audience: sts.amazonaws.com
       initContainers:
       - name: fix-emptydir-var-tmp-permissions
         image: alpine:3.23.4
