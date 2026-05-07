@@ -33,7 +33,7 @@ data:
     identity-provider = "kubernetes"
 
     [object-store]
-    backend = "s3"
+    backend = "filesystem"
     bucket = "repo-noa-re"
     directory = "/data"
 
