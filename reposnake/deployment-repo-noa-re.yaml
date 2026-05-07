@@ -16,19 +16,30 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: 3e353e07759c3c510b03b2215a86f74a7876277a96e2e11cca0bdbe56c1b293a
+        checksum/config: bea5790a6482c0b6f5274582b1bb6102700c9ac2a794a160cc170d85ce61a208
     spec:
       containers:
       - name: repo-noa-re
-        image: nresare/reposnake:0.1.3
+        image: nresare/reposnake:0.1.4
         args:
         - -c
         - /config/reposnake.toml
+        env:
+        - name: AWS_REGION
+          value: eu-west-2
+        - name: AWS_ROLE_ARN
+          value: arn:aws:iam::190019502607:role/repo-noa-re
+        - name: AWS_STS_REGIONAL_ENDPOINTS
+          value: regional
+        - name: AWS_WEB_IDENTITY_TOKEN_FILE
+          value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
         volumeMounts:
         - name: repo-noa-re-config
           mountPath: /config
         - name: data
           mountPath: /data
+        - name: emptydir-var-tmp
+          mountPath: /var/tmp
         - name: tokens
           mountPath: /var/run/secrets/tokens
           readOnly: true
@@ -39,6 +50,8 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: repo-noa-re-data
+      - name: emptydir-var-tmp
+        emptyDir: {}
       - name: tokens
         projected:
           sources:
@@ -62,3 +75,18 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /data
+      - name: fix-emptydir-var-tmp-permissions
+        image: alpine:3.23.4
+        imagePullPolicy: IfNotPresent
+        command:
+        - sh
+        - -c
+        - mkdir -p /var/tmp && chown -R 65532:65532 /var/tmp
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - name: emptydir-var-tmp
+          mountPath: /var/tmp
