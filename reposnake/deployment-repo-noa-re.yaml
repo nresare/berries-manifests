@@ -33,6 +33,8 @@ spec:
           value: regional
         - name: AWS_WEB_IDENTITY_TOKEN_FILE
           value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+        - name: RUST_LOG
+          value: reposnake=debug,aws_config=trace,aws_sdk_s3=trace,aws_smithy_runtime=trace,aws_smithy_http=trace
         volumeMounts:
         - name: repo-noa-re-config
           mountPath: /config
