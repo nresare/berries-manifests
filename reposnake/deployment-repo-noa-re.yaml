@@ -59,21 +59,6 @@ spec:
               expirationSeconds: 3600
               audience: sts.amazonaws.com
       initContainers:
-      - name: fix-data-permissions
-        image: alpine:3.23.4
-        imagePullPolicy: IfNotPresent
-        command:
-        - sh
-        - -c
-        - mkdir -p /data && chown -R 65532:65532 /data
-        resources: {}
-        securityContext:
-          allowPrivilegeEscalation: false
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - name: data
-          mountPath: /data
       - name: fix-emptydir-var-tmp-permissions
         image: alpine:3.23.4
         imagePullPolicy: IfNotPresent
