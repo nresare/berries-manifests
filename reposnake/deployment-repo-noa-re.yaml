@@ -16,7 +16,7 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: d3bc992ef03b06dcad8cad7a72ab47e458b482621550b280adae8df0e4dc9924
+        checksum/config: bc74f6f69116f7e8513be2e5da9b329ab61e6d3f28baf214ff7f4eeb1ec42d7a
     spec:
       containers:
       - name: repo-noa-re
