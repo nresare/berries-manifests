@@ -16,11 +16,11 @@ spec:
       labels:
         app: repo-noa-re
       annotations:
-        checksum/config: 390021b828288c11ef357b5b48e8b22fd7533784edfc0e7e3d37bae5cee32684
+        checksum/config: d3bc992ef03b06dcad8cad7a72ab47e458b482621550b280adae8df0e4dc9924
     spec:
       containers:
       - name: repo-noa-re
-        image: nresare/reposnake:0.1.6
+        image: nresare/reposnake:0.1.7
         args:
         - -c
         - /config/reposnake.toml
