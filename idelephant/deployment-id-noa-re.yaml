@@ -20,15 +20,13 @@ spec:
     spec:
       containers:
       - name: id-noa-re
-        image: packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.24-gfcc6c51
+        image: repo.noa.re/idelephant:0.2.2-b73e0d6f
         args:
         - -c
         - /config/idelephant.toml
         volumeMounts:
         - name: id-noa-re-config
           mountPath: /config
-        - name: db-password
-          mountPath: /db-password
         - name: email-password
           mountPath: /email-password
         - name: tokens
@@ -38,9 +36,6 @@ spec:
       - name: id-noa-re-config
         configMap:
           name: id-noa-re-config
-      - name: db-password
-        secret:
-          secretName: db-password
       - name: email-password
         secret:
           secretName: email-password
