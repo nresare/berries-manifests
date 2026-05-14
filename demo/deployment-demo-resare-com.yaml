@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: demo-resare-com
-        image: nresare/oidc-client-demo:latest
+        image: repo.noa.re/oidc-client-demo:0.1.0-c24e492b
         args:
         - -c
         - /config/config.toml
