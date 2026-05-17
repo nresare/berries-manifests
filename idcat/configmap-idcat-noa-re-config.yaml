@@ -33,3 +33,8 @@ data:
     identity-provider = "kubernetes"
     github-app = "nresare-buildsystem"
     required-claims = {sub="system:serviceaccount:default:default"}
+
+    [[access-policy]]
+    identity-provider = "kubernetes"
+    github-app = "nresare-buildsystem"
+    required-claims = {sub="system:serviceaccount:relcoord:default"}
