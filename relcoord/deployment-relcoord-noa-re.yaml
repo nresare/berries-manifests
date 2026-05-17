@@ -1,0 +1,40 @@
+# Source: relcoord.noa.re
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: relcoord-noa-re
+  labels:
+    app: relcoord-noa-re
+  namespace: relcoord
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: relcoord-noa-re
+  template:
+    metadata:
+      labels:
+        app: relcoord-noa-re
+      annotations:
+        checksum/config: 8c1856154b7568eb6ea5fe52acda18ef89a5677b7def6bf0ebfff9640bfdee09
+    spec:
+      containers:
+      - name: relcoord-noa-re
+        image: repo.noa.re/relcoord:0.1.0-1740c298
+        volumeMounts:
+        - name: relcoord-noa-re-config
+          mountPath: /config
+        - name: tokens
+          mountPath: /var/run/secrets/tokens
+          readOnly: true
+      volumes:
+      - name: relcoord-noa-re-config
+        configMap:
+          name: relcoord-noa-re-config
+      - name: tokens
+        projected:
+          sources:
+          - serviceAccountToken:
+              path: idmouse
+              expirationSeconds: 3600
+              audience: idmouse
