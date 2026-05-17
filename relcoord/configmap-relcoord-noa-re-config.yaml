@@ -5,7 +5,7 @@ metadata:
   name: relcoord-noa-re-config
   namespace: relcoord
 data:
-  relcoord.toml: |-
+  relcoord.toml: |
     host = "0.0.0.0"
     port = 8080
 
@@ -17,4 +17,3 @@ data:
         url = "http://idmouse.idmouse.svc/token/relcoord",
         token_path = "/var/run/secrets/tokens/idmouse"
     }
-    n

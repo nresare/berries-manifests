@@ -16,7 +16,7 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 8c1856154b7568eb6ea5fe52acda18ef89a5677b7def6bf0ebfff9640bfdee09
+        checksum/config: 64a77d0f2200cc1577fbe7e5d7b739b014a2081131b237a7dc1619bcc5e539f1
     spec:
       containers:
       - name: relcoord-noa-re
