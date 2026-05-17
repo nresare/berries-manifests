@@ -16,11 +16,11 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 1c3aa74c73caaa6979b155c30214bda589671345525467b37ecb7609c7edcdc9
+        checksum/config: 3a24aeac2740b5ce9dbe81f3c35021754ee050ab0c4001f16c79cfd82a0cbe68
     spec:
       containers:
       - name: relcoord-noa-re
-        image: repo.noa.re/relcoord:0.1.0-f7caa804
+        image: repo.noa.re/relcoord:0.1.0-cfe14e86
         volumeMounts:
         - name: relcoord-noa-re-config
           mountPath: /config
@@ -38,3 +38,7 @@ spec:
               path: idmouse
               expirationSeconds: 3600
               audience: idmouse
+          - serviceAccountToken:
+              path: idcat
+              expirationSeconds: 3600
+              audience: idcat
