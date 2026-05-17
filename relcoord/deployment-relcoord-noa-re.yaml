@@ -16,7 +16,7 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 3a24aeac2740b5ce9dbe81f3c35021754ee050ab0c4001f16c79cfd82a0cbe68
+        checksum/config: f76ae621ba2532359ebedfaf2589cfdc6fa3d79e55f138c1657d486d5a0316aa
     spec:
       containers:
       - name: relcoord-noa-re
@@ -39,6 +39,6 @@ spec:
               expirationSeconds: 3600
               audience: idmouse
           - serviceAccountToken:
-              path: idcat
+              path: idcat.noa.re
               expirationSeconds: 3600
-              audience: idcat
+              audience: idcat.noa.re
