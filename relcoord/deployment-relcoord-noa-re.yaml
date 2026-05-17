@@ -16,11 +16,11 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 21a5c7d38bbd1ba8c69a70088c6f3cb9b9ce9a0c1f9dcfce56aa907a43c0b9b1
+        checksum/config: 1c3aa74c73caaa6979b155c30214bda589671345525467b37ecb7609c7edcdc9
     spec:
       containers:
       - name: relcoord-noa-re
-        image: repo.noa.re/relcoord:0.1.0-281c6fcd
+        image: repo.noa.re/relcoord:0.1.0-f7caa804
         volumeMounts:
         - name: relcoord-noa-re-config
           mountPath: /config
