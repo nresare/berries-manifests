@@ -16,11 +16,11 @@ spec:
       labels:
         app: idcat-noa-re
       annotations:
-        checksum/config: c4e73d2dbd738df10de643f84b177b077c49081a89216211fc330a62d6d3040b
+        checksum/config: de13b7bdd5d534084f3ccb1811d0e423a6e4c64be54f9f4a867c44083d5f2865
     spec:
       containers:
       - name: idcat-noa-re
-        image: nresare/idcat:0.2.1
+        image: repo.noa.re/idcat:0.2.0-d113a144
         args:
         - --debug
         volumeMounts:
