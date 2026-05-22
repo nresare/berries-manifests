@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: relcoord-noa-re
-        image: repo.noa.re/relcoord:0.1.0-7c3c32b2
+        image: repo.noa.re/relcoord:0.1.0-2f878510
         volumeMounts:
         - name: relcoord-noa-re-config
           mountPath: /config
