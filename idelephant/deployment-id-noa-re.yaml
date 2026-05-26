@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: id-noa-re
-        image: repo.noa.re/idelephant:0.2.2-20bf1730
+        image: repo.noa.re/idelephant:0.2.2-bca6682b
         args:
         - -c
         - /config/idelephant.toml
