@@ -21,7 +21,7 @@ spec:
       serviceAccountName: idmouse
       containers:
       - name: idmouse
-        image: repo.noa.re/idmouse:0.2.1-e068163b:0.2.1-e068163b
+        image: repo.noa.re/idmouse:0.2.1-e7f52c30
         ports:
         - name: http
           containerPort: 8080
