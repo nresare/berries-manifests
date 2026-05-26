@@ -5,7 +5,7 @@ metadata:
   name: id-noa-re-config
   namespace: idelephant
 data:
-  idelephant.toml: |
+  idelephant.toml: |+
     root_key = "zq.luDCkyil5qf1qCJwm5lnSe97x5mROvXUMfwpOASJ0MgalZTIj"
 
     origin = "https://id.noa.re"
@@ -24,3 +24,5 @@ data:
     [persistence.idmouse]
     url = "http://idmouse.idmouse.svc/token/idelephant"
     token_path = "/var/run/secrets/tokens/idmouse"
+
+...

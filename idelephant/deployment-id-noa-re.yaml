@@ -16,11 +16,11 @@ spec:
       labels:
         app: id-noa-re
       annotations:
-        checksum/config: 7f52e7374cde436aa379218fcf0ee9aa1ebe0defbacf9d01a4dba10a4f1af1a3
+        checksum/config: b9fe14bd70ced5037feb30fa7a97115301e8c93000b0e6704f22dc0f5ecdd85e
     spec:
       containers:
       - name: id-noa-re
-        image: repo.noa.re/idelephant:0.2.2-11f923b5
+        image: repo.noa.re/idelephant:0.2.2-20bf1730
         args:
         - -c
         - /config/idelephant.toml
