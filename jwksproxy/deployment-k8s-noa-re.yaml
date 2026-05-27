@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: k8s-noa-re
-        image: repo.noa.re/jwksproxy:0.1.0-b6f68448
+        image: repo.noa.re/jwksproxy:0.1.0-dc122449
         volumeMounts:
         - name: k8s-noa-re-config
           mountPath: /config
