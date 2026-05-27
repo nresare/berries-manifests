@@ -5,7 +5,7 @@ metadata:
   name: demo-resare-com-config
   namespace: demo
 data:
-  config.toml: |+
+  config.toml: |
     # Application configuration for oidc-client-demo
 
     [app]
@@ -16,5 +16,3 @@ data:
     issuer = "https://id.noa.re"
     client_id = "oidc-client-demo"
     scopes = ["openid", "profile", "email"]
-
-...

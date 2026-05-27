@@ -16,11 +16,11 @@ spec:
       labels:
         app: demo-resare-com
       annotations:
-        checksum/config: ac7e704258da1c1aef9c513ca3069daf50cebac76cd7a2039f997b9296dba313
+        checksum/config: 86cf78da2a3ecaea05865da21de1e75216d363c1bc9d2b61c9725192d475069c
     spec:
       containers:
       - name: demo-resare-com
-        image: repo.noa.re/oidc-client-demo:0.1.0-0e03f03a
+        image: repo.noa.re/oidc-client-demo:0.1.0-6679d653
         args:
         - -c
         - /config/config.toml
