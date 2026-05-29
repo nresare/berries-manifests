@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: idcat-noa-re
-        image: repo.noa.re/idcat:0.2.1-58f14d85
+        image: repo.noa.re/idcat:0.2.1-d4c661c2
         args:
         - --debug
         volumeMounts:
