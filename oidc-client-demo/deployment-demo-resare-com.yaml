@@ -6,6 +6,8 @@ metadata:
   labels:
     app: demo-resare-com
   namespace: oidc-client-demo
+  annotations:
+    noa.re/deploy-id: cb7e14666c5fb454
 spec:
   replicas: 2
   selector:
@@ -20,10 +22,14 @@ spec:
     spec:
       containers:
       - name: demo-resare-com
-        image: repo.noa.re/oidc-client-demo:0.1.0-fdf14815
+        image: repo.noa.re/oidc-client-demo:0.1.0-2b98c967
         args:
         - -c
         - /config/config.toml
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
         volumeMounts:
         - name: demo-resare-com-config
           mountPath: /config
