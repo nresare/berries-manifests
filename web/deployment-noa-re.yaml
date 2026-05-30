@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/noa.re
-    noa.re/deploy-id: a838586ee427d2c1
+    noa.re/deploy-id: 5607dd98376f9ff4
 spec:
   replicas: 2
   selector:
