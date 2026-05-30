@@ -6,6 +6,8 @@ metadata:
   labels:
     app: repo-noa-re
   namespace: reposnake
+  annotations:
+    noa.re/deploy-id: f33b0253a27f6afa
 spec:
   replicas: 3
   selector:
@@ -20,10 +22,14 @@ spec:
     spec:
       containers:
       - name: repo-noa-re
-        image: repo.noa.re/reposnake:0.2.1-164520de
+        image: repo.noa.re/reposnake:0.2.1-012752aa
         args:
         - -c
         - /config/reposnake.toml
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
         env:
         - name: AWS_REGION
           value: eu-west-2
