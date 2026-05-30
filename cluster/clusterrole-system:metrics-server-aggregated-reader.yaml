@@ -11,7 +11,7 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-edit: 'true'
     rbac.authorization.k8s.io/aggregate-to-view: 'true'
   annotations:
-    noa.re/deploy-id: 1fee585cada63dc6
+    noa.re/deploy-id: 7058264e90a3666e
 rules:
 - apiGroups:
   - metrics.k8s.io

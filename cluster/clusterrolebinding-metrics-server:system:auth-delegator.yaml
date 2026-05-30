@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: metrics-server
     app.kubernetes.io/version: 0.8.0
   annotations:
-    noa.re/deploy-id: 1fee585cada63dc6
+    noa.re/deploy-id: 7058264e90a3666e
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
