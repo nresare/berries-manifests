@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/version: 2.3.7
   namespace: surrealdb
   annotations:
-    noa.re/deploy-id: 597addd821199d70
+    noa.re/deploy-id: fe3ec977fc94b403
 spec:
   strategy:
     type: Recreate
