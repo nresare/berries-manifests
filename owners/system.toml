@@ -1,0 +1,1 @@
+owned = ["acme-dns", "cert-manager", "cluster", "envoy-gateway-system", "kube-system", "metrics-server", "relcoord", "surrealdb", "teleport", "teleport-cluster", "web"]

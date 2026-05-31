@@ -1,8 +1,9 @@
 # Source: cert-manager
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: RoleBinding
 metadata:
-  name: cert-manager-webhook:subjectaccessreviews
+  name: cert-manager-webhook:dynamic-serving
+  namespace: cert-manager
   labels:
     app: webhook
     app.kubernetes.io/name: webhook
@@ -11,10 +12,11 @@ metadata:
     app.kubernetes.io/version: v1.20.2
   annotations:
     noa.re/deploy-id: f8213db031e986e2
-rules:
-- apiGroups:
-  - authorization.k8s.io
-  resources:
-  - subjectaccessreviews
-  verbs:
-  - create
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cert-manager-webhook:dynamic-serving
+subjects:
+- kind: ServiceAccount
+  name: cert-manager-webhook
+  namespace: cert-manager
