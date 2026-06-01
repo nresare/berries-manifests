@@ -6,6 +6,8 @@ metadata:
   labels:
     app: id-noa-re
   namespace: idelephant
+  annotations:
+    noa.re/deploy-id: b180315b49a90a9a
 spec:
   replicas: 1
   selector:
@@ -20,10 +22,14 @@ spec:
     spec:
       containers:
       - name: id-noa-re
-        image: repo.noa.re/idelephant:0.2.2-bca6682b
+        image: repo.noa.re/idelephant:0.2.2-c4a84e3f
         args:
         - -c
         - /config/idelephant.toml
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
         volumeMounts:
         - name: id-noa-re-config
           mountPath: /config
