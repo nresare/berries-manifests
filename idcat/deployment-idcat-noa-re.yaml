@@ -6,6 +6,8 @@ metadata:
   labels:
     app: idcat-noa-re
   namespace: idcat
+  annotations:
+    noa.re/deploy-id: 9df64af829ba7bba
 spec:
   replicas: 2
   selector:
@@ -20,9 +22,13 @@ spec:
     spec:
       containers:
       - name: idcat-noa-re
-        image: repo.noa.re/idcat:0.2.1-ad4271d8
+        image: repo.noa.re/idcat:0.2.1-eef5b1c8
         args:
         - --debug
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
         volumeMounts:
         - name: idcat-noa-re-config
           mountPath: /config
