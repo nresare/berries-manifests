@@ -1,11 +1,12 @@
-# Source: envoy-gateway-crds
+# Source: envoy-gateway
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     api-approved.kubernetes.io: https://github.com/kubernetes-sigs/gateway-api/pull/4530
     gateway.networking.k8s.io/bundle-version: v1.5.1
-    gateway.networking.k8s.io/channel: standard
+    gateway.networking.k8s.io/channel: experimental
+    noa.re/deploy-id: 0e4f2eae58209344
   name: listenersets.gateway.networking.k8s.io
 spec:
   group: gateway.networking.k8s.io
