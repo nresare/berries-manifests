@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/zq.lu
-    noa.re/deploy-id: ccd3097fce4439ec
+    noa.re/deploy-id: f522e09f37b4ae4c
 spec:
   replicas: 2
   selector:
@@ -49,7 +49,7 @@ spec:
         - mountPath: /src
           name: src
       - name: hugo
-        image: floryn90/hugo:0.163.0
+        image: floryn90/hugo:0.163.1
         volumeMounts:
         - mountPath: /src
           name: src
