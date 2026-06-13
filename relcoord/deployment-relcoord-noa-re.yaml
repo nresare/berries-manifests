@@ -7,7 +7,7 @@ metadata:
     app: relcoord-noa-re
   namespace: relcoord
   annotations:
-    noa.re/deploy-id: f8213db031e986e2
+    noa.re/deploy-id: d8808a8581bfd825
 spec:
   replicas: 2
   selector:
@@ -18,11 +18,11 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 053131f47350952c1e84907f3cf4c778b89d2a32b1a399f2107802ef142ca32e
+        checksum/config: 9c07a352fd27f4159da4730b3ced26cebc4e12f234bb9eb70ff928f5a30bba35
     spec:
       containers:
       - name: relcoord-noa-re
-        image: repo.noa.re/relcoord:0.1.0-bd898265
+        image: repo.noa.re/relcoord:0.1.0-b98452c1
         livenessProbe:
           httpGet:
             path: /healthz
