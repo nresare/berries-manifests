@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/noa.re
-    noa.re/deploy-id: f522e09f37b4ae4c
+    noa.re/deploy-id: 11d0b30959b44c83
 spec:
   replicas: 2
   selector:
@@ -24,7 +24,7 @@ spec:
         - name: SERVER_PORT
           value: '8080'
         name: web
-        image: ghcr.io/static-web-server/static-web-server:2.42
+        image: ghcr.io/static-web-server/static-web-server:2.43
         volumeMounts:
         - mountPath: /public
           name: public
