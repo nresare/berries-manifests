@@ -6,12 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: metrics-server
     app.kubernetes.io/instance: metrics-server
-    app.kubernetes.io/version: 0.8.0
+    app.kubernetes.io/version: 0.8.1
     rbac.authorization.k8s.io/aggregate-to-admin: 'true'
     rbac.authorization.k8s.io/aggregate-to-edit: 'true'
     rbac.authorization.k8s.io/aggregate-to-view: 'true'
   annotations:
-    noa.re/deploy-id: f8213db031e986e2
+    noa.re/deploy-id: 2f6065cb73361548
 rules:
 - apiGroups:
   - metrics.k8s.io

@@ -6,9 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/name: metrics-server
     app.kubernetes.io/instance: metrics-server
-    app.kubernetes.io/version: 0.8.0
+    app.kubernetes.io/version: 0.8.1
   annotations:
-    noa.re/deploy-id: f8213db031e986e2
+    noa.re/deploy-id: 2f6065cb73361548
 rules:
 - apiGroups:
   - ''
