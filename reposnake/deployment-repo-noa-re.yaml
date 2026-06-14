@@ -7,7 +7,7 @@ metadata:
     app: repo-noa-re
   namespace: reposnake
   annotations:
-    noa.re/deploy-id: a1b03eb77dc55b5a
+    noa.re/deploy-id: 7e19bafe3083e8f4
 spec:
   replicas: 3
   selector:
@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: repo-noa-re
-        image: repo.noa.re/reposnake:0.2.1-79569bf2
+        image: repo.noa.re/reposnake:0.2.1-611d3930
         args:
         - -c
         - /config/reposnake.toml
