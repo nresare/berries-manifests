@@ -5,35 +5,35 @@ metadata:
   name: repo-noa-re-config
   namespace: reposnake
   annotations:
-    noa.re/deploy-id: bf12ba62c5eea714
+    noa.re/deploy-id: 35e7b6bdb73e2ed0
 data:
-  reposnake.toml: |-
+  reposnake.toml: |
     bind-address = "0.0.0.0:8080"
     max-upload-bytes = 104857600
     origin = "https://repo.noa.re"
+    admin-role = "kubernetes"
 
-    [[identity-provider]]
+    [[role]]
     name = "kubernetes"
     audience = "repo.noa.re"
     issuer = "https://k8s.noa.re"
+    claims = {sub="system:serviceaccount:default:default"}
 
-
-    [[identity-provider]]
+    [[role]]
     name = "buildkite"
     audience = "repo.noa.re"
     issuer = "https://agent.buildkite.com"
+    claims = {organization_slug="nresare"}
 
     [[publisher]]
     name = "ci"
     projects = ["*"]
-    required-claims = {organization_slug="nresare"}
-    identity-provider = "buildkite"
+    role = "buildkite"
 
     [[publisher]]
     name = "manual"
     projects = ["*"]
-    required-claims = {sub="system:serviceaccount:default:default"}
-    identity-provider = "kubernetes"
+    role = "kubernetes"
 
     [object-store]
     backend = "s3"
@@ -45,7 +45,3 @@ data:
     [metadata-store.idmouse]
     url = "http://idmouse.idmouse.svc/token/reposnake"
     token-path = "/var/run/secrets/tokens/idmouse"
-
-    [admin]
-    identity-provider = "kubernetes"
-    required-claims = {sub="system:serviceaccount:default:default"}
