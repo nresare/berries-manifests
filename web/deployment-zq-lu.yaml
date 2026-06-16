@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/zq.lu
-    noa.re/deploy-id: 11d0b30959b44c83
+    noa.re/deploy-id: 3bc9bd5eb67603a3
 spec:
   replicas: 2
   selector:
@@ -35,7 +35,7 @@ spec:
             port: 8080
       initContainers:
       - name: git
-        image: alpine/git:v2.52.0
+        image: alpine/git:v2.54.0
         command:
         - /bin/sh
         - -c
