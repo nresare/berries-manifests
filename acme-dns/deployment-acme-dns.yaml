@@ -61,3 +61,8 @@ spec:
         - name: dns
           containerPort: 1053
           protocol: UDP
+      - name: dbg
+        image: nresare/dbg:ubunutu
+        volumeMounts:
+        - mountPath: /db
+          name: db
