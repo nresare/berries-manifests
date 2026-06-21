@@ -62,7 +62,7 @@ spec:
           containerPort: 1053
           protocol: UDP
       - name: dbg
-        image: nresare/dbg:ubunutu
+        image: nresare/dbg:ubuntu
         volumeMounts:
         - mountPath: /db
           name: db
