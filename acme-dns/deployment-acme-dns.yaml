@@ -63,6 +63,7 @@ spec:
           protocol: UDP
       - name: dbg
         image: nresare/dbg:ubuntu
+        command: ["/bin/sh", "-c", "while true; do sleep 1000; done;"]
         volumeMounts:
         - mountPath: /db
           name: db
