@@ -7,7 +7,7 @@ metadata:
     app: idcat-noa-re
   namespace: idcat
   annotations:
-    noa.re/deploy-id: 418351a485527d9c
+    noa.re/deploy-id: 6092f5d7558bdd5a
 spec:
   replicas: 2
   selector:
@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: idcat-noa-re
-        image: repo.noa.re/idcat:0.2.1-d7650b64
+        image: repo.noa.re/idcat:0.2.1-86c135a6
         args:
         - --debug
         livenessProbe:
