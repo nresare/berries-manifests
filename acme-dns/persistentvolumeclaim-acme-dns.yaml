@@ -5,11 +5,10 @@ metadata:
   name: acme-dns
   namespace: acme-dns
   annotations:
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: 6f2b339c9ccd2b66
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 10Mi
-  storageClassName: ceph-rbd
