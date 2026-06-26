@@ -1,0 +1,22 @@
+# Source: grafana-operator
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  namespace: grafana
+  annotations:
+    noa.re/deploy-id: 5facaac310eef407
+spec:
+  persistentVolumeClaim:
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
+  service:
+    metadata:
+      labels:
+        noa.re/discover: enabled
+      annotations:
+        teleport.dev/name: grafana

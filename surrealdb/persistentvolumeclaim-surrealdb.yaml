@@ -8,9 +8,11 @@ metadata:
     app.kubernetes.io/instance: surrealdb
     app.kubernetes.io/version: 2.3.7
   namespace: surrealdb
+  annotations:
+    noa.re/deploy-id: 5facaac310eef407
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 1Gi

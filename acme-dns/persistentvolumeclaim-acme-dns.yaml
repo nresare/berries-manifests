@@ -4,10 +4,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: acme-dns
   namespace: acme-dns
+  annotations:
+    noa.re/deploy-id: 5facaac310eef407
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 10Mi
   storageClassName: ceph-rbd
