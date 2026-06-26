@@ -1,0 +1,31 @@
+# Source: argo
+apiVersion: v1
+kind: Service
+metadata:
+  name: argo-argocd-server
+  namespace: argo
+  labels:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/instance: argo
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: v3.4.4
+    noa.re/discover: enabled
+  annotations:
+    teleport.dev/name: argo
+    teleport.dev/port: http
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/instance: argo

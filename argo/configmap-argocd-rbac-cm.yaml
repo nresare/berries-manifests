@@ -1,0 +1,17 @@
+# Source: argo
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argo
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/instance: argo
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: v3.4.4
+data:
+  policy.csv: ''
+  policy.default: ''
+  policy.matchMode: glob
+  scopes: '[groups]'
