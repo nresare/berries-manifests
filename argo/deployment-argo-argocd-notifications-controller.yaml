@@ -10,6 +10,8 @@ metadata:
     app.kubernetes.io/component: notifications-controller
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: v3.4.4
+  annotations:
+    noa.re/deploy-id: 69c76c6a7861e127
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -22,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: cdd5a74f1296bde16a67cae290e73e32c26352f811a46c6950ca276368e59ca4
+        checksum/cmd-params: f4f7b8e36ef8bdbda4f17cd2f88a836fe926fedb1442f4fe21e0176a1f8edb6c
       labels:
         app.kubernetes.io/name: argocd-notifications-controller
         app.kubernetes.io/instance: argo
