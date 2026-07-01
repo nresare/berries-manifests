@@ -18,6 +18,7 @@ metadata:
     rollout-max-unavailable: '50'
     grafana.com/prepare-downscale-http-path: store-gateway/prepare-shutdown
     grafana.com/prepare-downscale-http-port: '8080'
+    noa.re/deploy-id: 30198252cd9f2f9c
   namespace: mimir
 spec:
   podManagementPolicy: OrderedReady
@@ -55,7 +56,7 @@ spec:
         rollout-group: store-gateway
         zone: zone-a
       annotations:
-        checksum/config: 77981946fef4aaf584516e09fe73fdb4134018b07a92c3028f97a55fc5d61d95
+        checksum/config: ca3fa0223d534209d9b95f89006443c17225f9dec9a24a94a7b3b44c23d160d3
       namespace: mimir
     spec:
       serviceAccountName: mimir
