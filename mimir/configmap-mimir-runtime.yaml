@@ -1,0 +1,14 @@
+# Source: mimir
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mimir-runtime
+  labels:
+    app.kubernetes.io/name: mimir
+    app.kubernetes.io/instance: mimir
+    app.kubernetes.io/version: 3.1.2
+  namespace: mimir
+data:
+  runtime.yaml: |2
+
+    {}
