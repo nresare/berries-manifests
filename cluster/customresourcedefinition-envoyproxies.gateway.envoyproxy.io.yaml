@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.20.1
-    noa.re/deploy-id: 91f15d4e80b96910
+    noa.re/deploy-id: e28dad1ceada8726
   name: envoyproxies.gateway.envoyproxy.io
 spec:
   group: gateway.envoyproxy.io
@@ -177,12 +177,17 @@ spec:
                       type: string
                     type: array
                   fingerprints:
-                    description: "Fingerprints specifies TLS client fingerprinting.\n\
-                      When specified, a JAX fingerprint derived from the client\u2019\
-                      s TLS handshake\nis generated. The fingerprint can be logged\
-                      \ in access logs or\nforwarded to upstream services using request\
-                      \ headers.\n\nFingerprinting is disabled if not specified.\n\
-                      \nSupported values are:\n- JA3\n- JA4"
+                    description: |-
+                      Fingerprints specifies TLS client fingerprinting.
+                      When specified, a JAX fingerprint derived from the client’s TLS handshake
+                      is generated. The fingerprint can be logged in access logs or
+                      forwarded to upstream services using request headers.
+
+                      Fingerprinting is disabled if not specified.
+
+                      Supported values are:
+                      - JA3
+                      - JA4
                     items:
                       description: TLSFingerprintType specifies the TLS client fingerprinting
                         mode.
@@ -1150,7 +1155,6 @@ spec:
                                       procMount denotes the type of proc mount to use for the containers.
                                       The default value is Default which uses the container runtime defaults for
                                       readonly paths and masked paths.
-                                      This requires the ProcMountType feature flag to be enabled.
                                       Note that this field cannot be set when spec.os.name is windows.
                                     type: string
                                   readOnlyRootFilesystem:
@@ -3751,7 +3755,7 @@ spec:
                                         A failure to resolve or pull the image during pod startup will block containers from starting and may add significant latency. Failures will be retried using normal volume backoff and will be reported on the pod reason and message.
                                         The types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field.
                                         The OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images.
-                                        The volume will be mounted read-only (ro) and non-executable files (noexec).
+                                        The volume will be mounted read-only (ro).
                                         Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath) before 1.33.
                                         The field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.
                                       properties:
@@ -3925,8 +3929,7 @@ spec:
                                       description: |-
                                         portworxVolume represents a portworx volume attached and mounted on kubelets host machine.
                                         Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type
-                                        are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate
-                                        is on.
+                                        are redirected to the pxd.portworx.com CSI driver.
                                       properties:
                                         fsType:
                                           description: |-
@@ -5159,7 +5162,6 @@ spec:
                                       procMount denotes the type of proc mount to use for the containers.
                                       The default value is Default which uses the container runtime defaults for
                                       readonly paths and masked paths.
-                                      This requires the ProcMountType feature flag to be enabled.
                                       Note that this field cannot be set when spec.os.name is windows.
                                     type: string
                                   readOnlyRootFilesystem:
@@ -6472,7 +6474,6 @@ spec:
                                         procMount denotes the type of proc mount to use for the containers.
                                         The default value is Default which uses the container runtime defaults for
                                         readonly paths and masked paths.
-                                        This requires the ProcMountType feature flag to be enabled.
                                         Note that this field cannot be set when spec.os.name is windows.
                                       type: string
                                     readOnlyRootFilesystem:
@@ -9311,7 +9312,7 @@ spec:
                                         A failure to resolve or pull the image during pod startup will block containers from starting and may add significant latency. Failures will be retried using normal volume backoff and will be reported on the pod reason and message.
                                         The types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field.
                                         The OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images.
-                                        The volume will be mounted read-only (ro) and non-executable files (noexec).
+                                        The volume will be mounted read-only (ro).
                                         Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath) before 1.33.
                                         The field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.
                                       properties:
@@ -9485,8 +9486,7 @@ spec:
                                       description: |-
                                         portworxVolume represents a portworx volume attached and mounted on kubelets host machine.
                                         Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type
-                                        are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate
-                                        is on.
+                                        are redirected to the pxd.portworx.com CSI driver.
                                       properties:
                                         fsType:
                                           description: |-
@@ -11691,73 +11691,44 @@ spec:
                                                 anyOf:
                                                 - type: integer
                                                 - type: string
-                                                description: "BufferLimit Soft limit\
-                                                  \ on size of the cluster\u2019s\
-                                                  \ connections read and write buffers.\n\
-                                                  BufferLimit applies to connection\
-                                                  \ streaming (maybe non-streaming)\
-                                                  \ channel between processes, it's\
-                                                  \ in user space.\nIf unspecified,\
-                                                  \ an implementation defined default\
-                                                  \ is applied (32768 bytes).\nFor\
-                                                  \ example, 20Mi, 1Gi, 256Ki etc.\n\
-                                                  Note: that when the suffix is not\
-                                                  \ provided, the value is interpreted\
-                                                  \ as bytes."
+                                                description: |-
+                                                  BufferLimit Soft limit on size of the cluster’s connections read and write buffers.
+                                                  BufferLimit applies to connection streaming (maybe non-streaming) channel between processes, it's in user space.
+                                                  If unspecified, an implementation defined default is applied (32768 bytes).
+                                                  For example, 20Mi, 1Gi, 256Ki etc.
+                                                  Note: that when the suffix is not provided, the value is interpreted as bytes.
                                                 x-kubernetes-int-or-string: true
                                               preconnect:
-                                                description: "Preconnect configures\
-                                                  \ proactive upstream connections\
-                                                  \ to reduce latency by establishing\n\
-                                                  connections before they\u2019re\
-                                                  \ needed and avoiding connection\
-                                                  \ establishment overhead.\n\nIf\
-                                                  \ unset, Envoy will fetch connections\
-                                                  \ as needed to serve in-flight requests."
+                                                description: |-
+                                                  Preconnect configures proactive upstream connections to reduce latency by establishing
+                                                  connections before they’re needed and avoiding connection establishment overhead.
+
+                                                  If unset, Envoy will fetch connections as needed to serve in-flight requests.
                                                 properties:
                                                   perEndpointPercent:
-                                                    description: "PerEndpointPercent\
-                                                      \ configures how many additional\
-                                                      \ connections to maintain per\n\
-                                                      upstream endpoint, useful for\
-                                                      \ high-QPS or latency sensitive\
-                                                      \ services. Expressed as a\n\
-                                                      percentage of the connections\
-                                                      \ required by active streams\n\
-                                                      (e.g. 100 = preconnect disabled,\
-                                                      \ 105 = 1.05x connections per-endpoint,\
-                                                      \ 200 = 2.00\xD7).\n\nAllowed\
-                                                      \ value range is between 100-300.\
-                                                      \ When both PerEndpointPercent\
-                                                      \ and\nPredictivePercent are\
-                                                      \ set, Envoy ensures both are\
-                                                      \ satisfied (max of the two)."
+                                                    description: |-
+                                                      PerEndpointPercent configures how many additional connections to maintain per
+                                                      upstream endpoint, useful for high-QPS or latency sensitive services. Expressed as a
+                                                      percentage of the connections required by active streams
+                                                      (e.g. 100 = preconnect disabled, 105 = 1.05x connections per-endpoint, 200 = 2.00×).
+
+                                                      Allowed value range is between 100-300. When both PerEndpointPercent and
+                                                      PredictivePercent are set, Envoy ensures both are satisfied (max of the two).
                                                     format: int32
                                                     maximum: 300
                                                     minimum: 100
                                                     type: integer
                                                   predictivePercent:
-                                                    description: "PredictivePercent\
-                                                      \ configures how many additional\
-                                                      \ connections to maintain\n\
-                                                      across the cluster by anticipating\
-                                                      \ which upstream endpoint the\
-                                                      \ load balancer\nwill select\
-                                                      \ next, useful for low-QPS services.\
-                                                      \ Relies on deterministic\n\
-                                                      loadbalancing and is only supported\
-                                                      \ with Random or RoundRobin.\n\
-                                                      Expressed as a percentage of\
-                                                      \ the connections required by\
-                                                      \ active streams\n(e.g. 100\
-                                                      \ = 1.0 (no preconnect), 105\
-                                                      \ = 1.05\xD7 connections across\
-                                                      \ the cluster, 200 = 2.00\xD7\
-                                                      ).\n\nMinimum allowed value\
-                                                      \ is 100. When both PerEndpointPercent\
-                                                      \ and PredictivePercent are\n\
-                                                      set Envoy ensures both are satisfied\
-                                                      \ per host (max of the two)."
+                                                    description: |-
+                                                      PredictivePercent configures how many additional connections to maintain
+                                                      across the cluster by anticipating which upstream endpoint the load balancer
+                                                      will select next, useful for low-QPS services. Relies on deterministic
+                                                      loadbalancing and is only supported with Random or RoundRobin.
+                                                      Expressed as a percentage of the connections required by active streams
+                                                      (e.g. 100 = 1.0 (no preconnect), 105 = 1.05× connections across the cluster, 200 = 2.00×).
+
+                                                      Minimum allowed value is 100. When both PerEndpointPercent and PredictivePercent are
+                                                      set Envoy ensures both are satisfied per host (max of the two).
                                                     format: int32
                                                     minimum: 100
                                                     type: integer
@@ -11799,13 +11770,10 @@ spec:
                                                 - IPv4AndIPv6
                                                 type: string
                                               respectDnsTtl:
-                                                description: "RespectDNSTTL indicates\
-                                                  \ whether the DNS Time-To-Live (TTL)\
-                                                  \ should be respected.\nIf the value\
-                                                  \ is set to true, the DNS refresh\
-                                                  \ rate will be set to the resource\
-                                                  \ record\u2019s TTL.\nDefaults to\
-                                                  \ true."
+                                                description: |-
+                                                  RespectDNSTTL indicates whether the DNS Time-To-Live (TTL) should be respected.
+                                                  If the value is set to true, the DNS refresh rate will be set to the resource record’s TTL.
+                                                  Defaults to true.
                                                 type: boolean
                                             type: object
                                           healthCheck:
@@ -13255,73 +13223,44 @@ spec:
                                                 anyOf:
                                                 - type: integer
                                                 - type: string
-                                                description: "BufferLimit Soft limit\
-                                                  \ on size of the cluster\u2019s\
-                                                  \ connections read and write buffers.\n\
-                                                  BufferLimit applies to connection\
-                                                  \ streaming (maybe non-streaming)\
-                                                  \ channel between processes, it's\
-                                                  \ in user space.\nIf unspecified,\
-                                                  \ an implementation defined default\
-                                                  \ is applied (32768 bytes).\nFor\
-                                                  \ example, 20Mi, 1Gi, 256Ki etc.\n\
-                                                  Note: that when the suffix is not\
-                                                  \ provided, the value is interpreted\
-                                                  \ as bytes."
+                                                description: |-
+                                                  BufferLimit Soft limit on size of the cluster’s connections read and write buffers.
+                                                  BufferLimit applies to connection streaming (maybe non-streaming) channel between processes, it's in user space.
+                                                  If unspecified, an implementation defined default is applied (32768 bytes).
+                                                  For example, 20Mi, 1Gi, 256Ki etc.
+                                                  Note: that when the suffix is not provided, the value is interpreted as bytes.
                                                 x-kubernetes-int-or-string: true
                                               preconnect:
-                                                description: "Preconnect configures\
-                                                  \ proactive upstream connections\
-                                                  \ to reduce latency by establishing\n\
-                                                  connections before they\u2019re\
-                                                  \ needed and avoiding connection\
-                                                  \ establishment overhead.\n\nIf\
-                                                  \ unset, Envoy will fetch connections\
-                                                  \ as needed to serve in-flight requests."
+                                                description: |-
+                                                  Preconnect configures proactive upstream connections to reduce latency by establishing
+                                                  connections before they’re needed and avoiding connection establishment overhead.
+
+                                                  If unset, Envoy will fetch connections as needed to serve in-flight requests.
                                                 properties:
                                                   perEndpointPercent:
-                                                    description: "PerEndpointPercent\
-                                                      \ configures how many additional\
-                                                      \ connections to maintain per\n\
-                                                      upstream endpoint, useful for\
-                                                      \ high-QPS or latency sensitive\
-                                                      \ services. Expressed as a\n\
-                                                      percentage of the connections\
-                                                      \ required by active streams\n\
-                                                      (e.g. 100 = preconnect disabled,\
-                                                      \ 105 = 1.05x connections per-endpoint,\
-                                                      \ 200 = 2.00\xD7).\n\nAllowed\
-                                                      \ value range is between 100-300.\
-                                                      \ When both PerEndpointPercent\
-                                                      \ and\nPredictivePercent are\
-                                                      \ set, Envoy ensures both are\
-                                                      \ satisfied (max of the two)."
+                                                    description: |-
+                                                      PerEndpointPercent configures how many additional connections to maintain per
+                                                      upstream endpoint, useful for high-QPS or latency sensitive services. Expressed as a
+                                                      percentage of the connections required by active streams
+                                                      (e.g. 100 = preconnect disabled, 105 = 1.05x connections per-endpoint, 200 = 2.00×).
+
+                                                      Allowed value range is between 100-300. When both PerEndpointPercent and
+                                                      PredictivePercent are set, Envoy ensures both are satisfied (max of the two).
                                                     format: int32
                                                     maximum: 300
                                                     minimum: 100
                                                     type: integer
                                                   predictivePercent:
-                                                    description: "PredictivePercent\
-                                                      \ configures how many additional\
-                                                      \ connections to maintain\n\
-                                                      across the cluster by anticipating\
-                                                      \ which upstream endpoint the\
-                                                      \ load balancer\nwill select\
-                                                      \ next, useful for low-QPS services.\
-                                                      \ Relies on deterministic\n\
-                                                      loadbalancing and is only supported\
-                                                      \ with Random or RoundRobin.\n\
-                                                      Expressed as a percentage of\
-                                                      \ the connections required by\
-                                                      \ active streams\n(e.g. 100\
-                                                      \ = 1.0 (no preconnect), 105\
-                                                      \ = 1.05\xD7 connections across\
-                                                      \ the cluster, 200 = 2.00\xD7\
-                                                      ).\n\nMinimum allowed value\
-                                                      \ is 100. When both PerEndpointPercent\
-                                                      \ and PredictivePercent are\n\
-                                                      set Envoy ensures both are satisfied\
-                                                      \ per host (max of the two)."
+                                                    description: |-
+                                                      PredictivePercent configures how many additional connections to maintain
+                                                      across the cluster by anticipating which upstream endpoint the load balancer
+                                                      will select next, useful for low-QPS services. Relies on deterministic
+                                                      loadbalancing and is only supported with Random or RoundRobin.
+                                                      Expressed as a percentage of the connections required by active streams
+                                                      (e.g. 100 = 1.0 (no preconnect), 105 = 1.05× connections across the cluster, 200 = 2.00×).
+
+                                                      Minimum allowed value is 100. When both PerEndpointPercent and PredictivePercent are
+                                                      set Envoy ensures both are satisfied per host (max of the two).
                                                     format: int32
                                                     minimum: 100
                                                     type: integer
@@ -13363,13 +13302,10 @@ spec:
                                                 - IPv4AndIPv6
                                                 type: string
                                               respectDnsTtl:
-                                                description: "RespectDNSTTL indicates\
-                                                  \ whether the DNS Time-To-Live (TTL)\
-                                                  \ should be respected.\nIf the value\
-                                                  \ is set to true, the DNS refresh\
-                                                  \ rate will be set to the resource\
-                                                  \ record\u2019s TTL.\nDefaults to\
-                                                  \ true."
+                                                description: |-
+                                                  RespectDNSTTL indicates whether the DNS Time-To-Live (TTL) should be respected.
+                                                  If the value is set to true, the DNS refresh rate will be set to the resource record’s TTL.
+                                                  Defaults to true.
                                                 type: boolean
                                             type: object
                                           healthCheck:
@@ -14615,15 +14551,13 @@ spec:
                           for virtual hosts.
                         type: boolean
                       matches:
-                        description: "Matches defines configuration for selecting\
-                          \ specific metrics instead of generating all metrics stats\n\
-                          that are enabled by default. This helps reduce CPU and memory\
-                          \ overhead in Envoy, but eliminating some stats\nmay after\
-                          \ critical functionality. Here are the stats that we strongly\
-                          \ recommend not disabling:\n`cluster_manager.warming_clusters`,\
-                          \ `cluster.<cluster_name>.membership_total`,`cluster.<cluster_name>.membership_healthy`,\n\
-                          `cluster.<cluster_name>.membership_degraded`\uFF0Creference\
-                          \  https://github.com/envoyproxy/envoy/issues/9856,\nhttps://github.com/envoyproxy/envoy/issues/14610"
+                        description: |-
+                          Matches defines configuration for selecting specific metrics instead of generating all metrics stats
+                          that are enabled by default. This helps reduce CPU and memory overhead in Envoy, but eliminating some stats
+                          may after critical functionality. Here are the stats that we strongly recommend not disabling:
+                          `cluster_manager.warming_clusters`, `cluster.<cluster_name>.membership_total`,`cluster.<cluster_name>.membership_healthy`,
+                          `cluster.<cluster_name>.membership_degraded`，reference  https://github.com/envoyproxy/envoy/issues/9856,
+                          https://github.com/envoyproxy/envoy/issues/14610
                         items:
                           description: |-
                             StringMatch defines how to match any strings.
@@ -15013,63 +14947,44 @@ spec:
                                           anyOf:
                                           - type: integer
                                           - type: string
-                                          description: "BufferLimit Soft limit on\
-                                            \ size of the cluster\u2019s connections\
-                                            \ read and write buffers.\nBufferLimit\
-                                            \ applies to connection streaming (maybe\
-                                            \ non-streaming) channel between processes,\
-                                            \ it's in user space.\nIf unspecified,\
-                                            \ an implementation defined default is\
-                                            \ applied (32768 bytes).\nFor example,\
-                                            \ 20Mi, 1Gi, 256Ki etc.\nNote: that when\
-                                            \ the suffix is not provided, the value\
-                                            \ is interpreted as bytes."
+                                          description: |-
+                                            BufferLimit Soft limit on size of the cluster’s connections read and write buffers.
+                                            BufferLimit applies to connection streaming (maybe non-streaming) channel between processes, it's in user space.
+                                            If unspecified, an implementation defined default is applied (32768 bytes).
+                                            For example, 20Mi, 1Gi, 256Ki etc.
+                                            Note: that when the suffix is not provided, the value is interpreted as bytes.
                                           x-kubernetes-int-or-string: true
                                         preconnect:
-                                          description: "Preconnect configures proactive\
-                                            \ upstream connections to reduce latency\
-                                            \ by establishing\nconnections before\
-                                            \ they\u2019re needed and avoiding connection\
-                                            \ establishment overhead.\n\nIf unset,\
-                                            \ Envoy will fetch connections as needed\
-                                            \ to serve in-flight requests."
+                                          description: |-
+                                            Preconnect configures proactive upstream connections to reduce latency by establishing
+                                            connections before they’re needed and avoiding connection establishment overhead.
+
+                                            If unset, Envoy will fetch connections as needed to serve in-flight requests.
                                           properties:
                                             perEndpointPercent:
-                                              description: "PerEndpointPercent configures\
-                                                \ how many additional connections\
-                                                \ to maintain per\nupstream endpoint,\
-                                                \ useful for high-QPS or latency sensitive\
-                                                \ services. Expressed as a\npercentage\
-                                                \ of the connections required by active\
-                                                \ streams\n(e.g. 100 = preconnect\
-                                                \ disabled, 105 = 1.05x connections\
-                                                \ per-endpoint, 200 = 2.00\xD7).\n\
-                                                \nAllowed value range is between 100-300.\
-                                                \ When both PerEndpointPercent and\n\
-                                                PredictivePercent are set, Envoy ensures\
-                                                \ both are satisfied (max of the two)."
+                                              description: |-
+                                                PerEndpointPercent configures how many additional connections to maintain per
+                                                upstream endpoint, useful for high-QPS or latency sensitive services. Expressed as a
+                                                percentage of the connections required by active streams
+                                                (e.g. 100 = preconnect disabled, 105 = 1.05x connections per-endpoint, 200 = 2.00×).
+
+                                                Allowed value range is between 100-300. When both PerEndpointPercent and
+                                                PredictivePercent are set, Envoy ensures both are satisfied (max of the two).
                                               format: int32
                                               maximum: 300
                                               minimum: 100
                                               type: integer
                                             predictivePercent:
-                                              description: "PredictivePercent configures\
-                                                \ how many additional connections\
-                                                \ to maintain\nacross the cluster\
-                                                \ by anticipating which upstream endpoint\
-                                                \ the load balancer\nwill select next,\
-                                                \ useful for low-QPS services. Relies\
-                                                \ on deterministic\nloadbalancing\
-                                                \ and is only supported with Random\
-                                                \ or RoundRobin.\nExpressed as a percentage\
-                                                \ of the connections required by active\
-                                                \ streams\n(e.g. 100 = 1.0 (no preconnect),\
-                                                \ 105 = 1.05\xD7 connections across\
-                                                \ the cluster, 200 = 2.00\xD7).\n\n\
-                                                Minimum allowed value is 100. When\
-                                                \ both PerEndpointPercent and PredictivePercent\
-                                                \ are\nset Envoy ensures both are\
-                                                \ satisfied per host (max of the two)."
+                                              description: |-
+                                                PredictivePercent configures how many additional connections to maintain
+                                                across the cluster by anticipating which upstream endpoint the load balancer
+                                                will select next, useful for low-QPS services. Relies on deterministic
+                                                loadbalancing and is only supported with Random or RoundRobin.
+                                                Expressed as a percentage of the connections required by active streams
+                                                (e.g. 100 = 1.0 (no preconnect), 105 = 1.05× connections across the cluster, 200 = 2.00×).
+
+                                                Minimum allowed value is 100. When both PerEndpointPercent and PredictivePercent are
+                                                set Envoy ensures both are satisfied per host (max of the two).
                                               format: int32
                                               minimum: 100
                                               type: integer
@@ -15110,12 +15025,10 @@ spec:
                                           - IPv4AndIPv6
                                           type: string
                                         respectDnsTtl:
-                                          description: "RespectDNSTTL indicates whether\
-                                            \ the DNS Time-To-Live (TTL) should be\
-                                            \ respected.\nIf the value is set to true,\
-                                            \ the DNS refresh rate will be set to\
-                                            \ the resource record\u2019s TTL.\nDefaults\
-                                            \ to true."
+                                          description: |-
+                                            RespectDNSTTL indicates whether the DNS Time-To-Live (TTL) should be respected.
+                                            If the value is set to true, the DNS refresh rate will be set to the resource record’s TTL.
+                                            Defaults to true.
                                           type: boolean
                                       type: object
                                     healthCheck:
@@ -16644,58 +16557,44 @@ spec:
                                     anyOf:
                                     - type: integer
                                     - type: string
-                                    description: "BufferLimit Soft limit on size of\
-                                      \ the cluster\u2019s connections read and write\
-                                      \ buffers.\nBufferLimit applies to connection\
-                                      \ streaming (maybe non-streaming) channel between\
-                                      \ processes, it's in user space.\nIf unspecified,\
-                                      \ an implementation defined default is applied\
-                                      \ (32768 bytes).\nFor example, 20Mi, 1Gi, 256Ki\
-                                      \ etc.\nNote: that when the suffix is not provided,\
-                                      \ the value is interpreted as bytes."
+                                    description: |-
+                                      BufferLimit Soft limit on size of the cluster’s connections read and write buffers.
+                                      BufferLimit applies to connection streaming (maybe non-streaming) channel between processes, it's in user space.
+                                      If unspecified, an implementation defined default is applied (32768 bytes).
+                                      For example, 20Mi, 1Gi, 256Ki etc.
+                                      Note: that when the suffix is not provided, the value is interpreted as bytes.
                                     x-kubernetes-int-or-string: true
                                   preconnect:
-                                    description: "Preconnect configures proactive\
-                                      \ upstream connections to reduce latency by\
-                                      \ establishing\nconnections before they\u2019\
-                                      re needed and avoiding connection establishment\
-                                      \ overhead.\n\nIf unset, Envoy will fetch connections\
-                                      \ as needed to serve in-flight requests."
+                                    description: |-
+                                      Preconnect configures proactive upstream connections to reduce latency by establishing
+                                      connections before they’re needed and avoiding connection establishment overhead.
+
+                                      If unset, Envoy will fetch connections as needed to serve in-flight requests.
                                     properties:
                                       perEndpointPercent:
-                                        description: "PerEndpointPercent configures\
-                                          \ how many additional connections to maintain\
-                                          \ per\nupstream endpoint, useful for high-QPS\
-                                          \ or latency sensitive services. Expressed\
-                                          \ as a\npercentage of the connections required\
-                                          \ by active streams\n(e.g. 100 = preconnect\
-                                          \ disabled, 105 = 1.05x connections per-endpoint,\
-                                          \ 200 = 2.00\xD7).\n\nAllowed value range\
-                                          \ is between 100-300. When both PerEndpointPercent\
-                                          \ and\nPredictivePercent are set, Envoy\
-                                          \ ensures both are satisfied (max of the\
-                                          \ two)."
+                                        description: |-
+                                          PerEndpointPercent configures how many additional connections to maintain per
+                                          upstream endpoint, useful for high-QPS or latency sensitive services. Expressed as a
+                                          percentage of the connections required by active streams
+                                          (e.g. 100 = preconnect disabled, 105 = 1.05x connections per-endpoint, 200 = 2.00×).
+
+                                          Allowed value range is between 100-300. When both PerEndpointPercent and
+                                          PredictivePercent are set, Envoy ensures both are satisfied (max of the two).
                                         format: int32
                                         maximum: 300
                                         minimum: 100
                                         type: integer
                                       predictivePercent:
-                                        description: "PredictivePercent configures\
-                                          \ how many additional connections to maintain\n\
-                                          across the cluster by anticipating which\
-                                          \ upstream endpoint the load balancer\n\
-                                          will select next, useful for low-QPS services.\
-                                          \ Relies on deterministic\nloadbalancing\
-                                          \ and is only supported with Random or RoundRobin.\n\
-                                          Expressed as a percentage of the connections\
-                                          \ required by active streams\n(e.g. 100\
-                                          \ = 1.0 (no preconnect), 105 = 1.05\xD7\
-                                          \ connections across the cluster, 200 =\
-                                          \ 2.00\xD7).\n\nMinimum allowed value is\
-                                          \ 100. When both PerEndpointPercent and\
-                                          \ PredictivePercent are\nset Envoy ensures\
-                                          \ both are satisfied per host (max of the\
-                                          \ two)."
+                                        description: |-
+                                          PredictivePercent configures how many additional connections to maintain
+                                          across the cluster by anticipating which upstream endpoint the load balancer
+                                          will select next, useful for low-QPS services. Relies on deterministic
+                                          loadbalancing and is only supported with Random or RoundRobin.
+                                          Expressed as a percentage of the connections required by active streams
+                                          (e.g. 100 = 1.0 (no preconnect), 105 = 1.05× connections across the cluster, 200 = 2.00×).
+
+                                          Minimum allowed value is 100. When both PerEndpointPercent and PredictivePercent are
+                                          set Envoy ensures both are satisfied per host (max of the two).
                                         format: int32
                                         minimum: 100
                                         type: integer
@@ -16736,11 +16635,10 @@ spec:
                                     - IPv4AndIPv6
                                     type: string
                                   respectDnsTtl:
-                                    description: "RespectDNSTTL indicates whether\
-                                      \ the DNS Time-To-Live (TTL) should be respected.\n\
-                                      If the value is set to true, the DNS refresh\
-                                      \ rate will be set to the resource record\u2019\
-                                      s TTL.\nDefaults to true."
+                                    description: |-
+                                      RespectDNSTTL indicates whether the DNS Time-To-Live (TTL) should be respected.
+                                      If the value is set to true, the DNS refresh rate will be set to the resource record’s TTL.
+                                      Defaults to true.
                                     type: boolean
                                 type: object
                               healthCheck:

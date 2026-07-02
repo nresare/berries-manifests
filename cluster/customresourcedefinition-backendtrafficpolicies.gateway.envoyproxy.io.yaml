@@ -1,9 +1,10 @@
-# Source: envoy-gateway-crds
+# Source: envoy-gateway
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.20.1
+    noa.re/deploy-id: e28dad1ceada8726
   name: backendtrafficpolicies.gateway.envoyproxy.io
 spec:
   group: gateway.envoyproxy.io
@@ -455,47 +456,44 @@ spec:
                     anyOf:
                     - type: integer
                     - type: string
-                    description: "BufferLimit Soft limit on size of the cluster\u2019\
-                      s connections read and write buffers.\nBufferLimit applies to\
-                      \ connection streaming (maybe non-streaming) channel between\
-                      \ processes, it's in user space.\nIf unspecified, an implementation\
-                      \ defined default is applied (32768 bytes).\nFor example, 20Mi,\
-                      \ 1Gi, 256Ki etc.\nNote: that when the suffix is not provided,\
-                      \ the value is interpreted as bytes."
+                    description: |-
+                      BufferLimit Soft limit on size of the cluster’s connections read and write buffers.
+                      BufferLimit applies to connection streaming (maybe non-streaming) channel between processes, it's in user space.
+                      If unspecified, an implementation defined default is applied (32768 bytes).
+                      For example, 20Mi, 1Gi, 256Ki etc.
+                      Note: that when the suffix is not provided, the value is interpreted as bytes.
                     x-kubernetes-int-or-string: true
                   preconnect:
-                    description: "Preconnect configures proactive upstream connections\
-                      \ to reduce latency by establishing\nconnections before they\u2019\
-                      re needed and avoiding connection establishment overhead.\n\n\
-                      If unset, Envoy will fetch connections as needed to serve in-flight\
-                      \ requests."
+                    description: |-
+                      Preconnect configures proactive upstream connections to reduce latency by establishing
+                      connections before they’re needed and avoiding connection establishment overhead.
+
+                      If unset, Envoy will fetch connections as needed to serve in-flight requests.
                     properties:
                       perEndpointPercent:
-                        description: "PerEndpointPercent configures how many additional\
-                          \ connections to maintain per\nupstream endpoint, useful\
-                          \ for high-QPS or latency sensitive services. Expressed\
-                          \ as a\npercentage of the connections required by active\
-                          \ streams\n(e.g. 100 = preconnect disabled, 105 = 1.05x\
-                          \ connections per-endpoint, 200 = 2.00\xD7).\n\nAllowed\
-                          \ value range is between 100-300. When both PerEndpointPercent\
-                          \ and\nPredictivePercent are set, Envoy ensures both are\
-                          \ satisfied (max of the two)."
+                        description: |-
+                          PerEndpointPercent configures how many additional connections to maintain per
+                          upstream endpoint, useful for high-QPS or latency sensitive services. Expressed as a
+                          percentage of the connections required by active streams
+                          (e.g. 100 = preconnect disabled, 105 = 1.05x connections per-endpoint, 200 = 2.00×).
+
+                          Allowed value range is between 100-300. When both PerEndpointPercent and
+                          PredictivePercent are set, Envoy ensures both are satisfied (max of the two).
                         format: int32
                         maximum: 300
                         minimum: 100
                         type: integer
                       predictivePercent:
-                        description: "PredictivePercent configures how many additional\
-                          \ connections to maintain\nacross the cluster by anticipating\
-                          \ which upstream endpoint the load balancer\nwill select\
-                          \ next, useful for low-QPS services. Relies on deterministic\n\
-                          loadbalancing and is only supported with Random or RoundRobin.\n\
-                          Expressed as a percentage of the connections required by\
-                          \ active streams\n(e.g. 100 = 1.0 (no preconnect), 105 =\
-                          \ 1.05\xD7 connections across the cluster, 200 = 2.00\xD7\
-                          ).\n\nMinimum allowed value is 100. When both PerEndpointPercent\
-                          \ and PredictivePercent are\nset Envoy ensures both are\
-                          \ satisfied per host (max of the two)."
+                        description: |-
+                          PredictivePercent configures how many additional connections to maintain
+                          across the cluster by anticipating which upstream endpoint the load balancer
+                          will select next, useful for low-QPS services. Relies on deterministic
+                          loadbalancing and is only supported with Random or RoundRobin.
+                          Expressed as a percentage of the connections required by active streams
+                          (e.g. 100 = 1.0 (no preconnect), 105 = 1.05× connections across the cluster, 200 = 2.00×).
+
+                          Minimum allowed value is 100. When both PerEndpointPercent and PredictivePercent are
+                          set Envoy ensures both are satisfied per host (max of the two).
                         format: int32
                         minimum: 100
                         type: integer
@@ -536,10 +534,10 @@ spec:
                     - IPv4AndIPv6
                     type: string
                   respectDnsTtl:
-                    description: "RespectDNSTTL indicates whether the DNS Time-To-Live\
-                      \ (TTL) should be respected.\nIf the value is set to true, the\
-                      \ DNS refresh rate will be set to the resource record\u2019\
-                      s TTL.\nDefaults to true."
+                    description: |-
+                      RespectDNSTTL indicates whether the DNS Time-To-Live (TTL) should be respected.
+                      If the value is set to true, the DNS refresh rate will be set to the resource record’s TTL.
+                      Defaults to true.
                     type: boolean
                 type: object
               faultInjection:
@@ -1764,7 +1762,7 @@ spec:
                                   description: |-
                                     Requests is the number of requests (or cost units, when used with
                                     cost-based rate limiting) allowed per Unit.
-                                  format: int32
+                                  format: int64
                                   maximum: 4294967295
                                   minimum: 1
                                   type: integer
@@ -2148,7 +2146,7 @@ spec:
                                   description: |-
                                     Requests is the number of requests (or cost units, when used with
                                     cost-based rate limiting) allowed per Unit.
-                                  format: int32
+                                  format: int64
                                   maximum: 4294967295
                                   minimum: 1
                                   type: integer
