@@ -4,7 +4,7 @@ kind: ClusterRole
 metadata:
   name: rook-ceph-rbd-csi-ceph-com-ctrlplugin-cr
   annotations:
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: 26658c7721a94691
 rules:
 - apiGroups:
   - ''
@@ -226,3 +226,11 @@ rules:
   verbs:
   - get
   - list
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - volumeattributesclasses
+  verbs:
+  - get
+  - list
+  - watch

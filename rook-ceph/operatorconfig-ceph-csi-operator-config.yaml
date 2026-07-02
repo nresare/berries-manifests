@@ -4,13 +4,15 @@ kind: OperatorConfig
 metadata:
   name: ceph-csi-operator-config
   namespace: rook-ceph
+  annotations:
+    noa.re/deploy-id: 26658c7721a94691
 spec:
   driverSpecDefaults:
     log:
       verbosity: 0
       rotation:
         maxFiles: 7
-        maxLogSize: 10Gi
+        maxLogSize: 10G
         periodicity: daily
     imageSet:
       name: rook-csi-operator-image-set-configmap
