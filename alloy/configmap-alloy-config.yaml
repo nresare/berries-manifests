@@ -5,7 +5,7 @@ metadata:
   name: alloy-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: 963c9a0b76ac41ee
+    noa.re/deploy-id: b214307417f7623d
 data:
   alloy.cfg: |
     prometheus.remote_write "mimir" {
@@ -21,7 +21,7 @@ data:
       targets = [
         {
           __address__ = "hallon:9100",
-          instance    = "host1",
+          instance    = "hallon",
         },
         {
           __address__ = "smultron:9100",
@@ -38,6 +38,10 @@ data:
         {
           __address__ = "havtorn:9100",
           instance    = "havtorn",
+        },
+        {
+          __address__ = "nypon:9100",
+          instance    = "nypon",
         },
         {
           __address__ = "nadia:9100",

@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: v1.17.0
     app.kubernetes.io/part-of: alloy
   annotations:
-    noa.re/deploy-id: 963c9a0b76ac41ee
+    noa.re/deploy-id: b214307417f7623d
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -22,7 +22,7 @@ spec:
     metadata:
       annotations:
         kubectl.kubernetes.io/default-container: alloy
-        checksum/config: 35b2d6912647e804fdea3de7515fdc6decdd801b5a2ab73e996c30f898e4da90
+        checksum/config: e091adfbc971b97d0478b2a0ca7c63fbd1a284fd7ed12c2ec20d692fb3234ff9
       labels:
         app.kubernetes.io/name: alloy
         app.kubernetes.io/instance: alloy
