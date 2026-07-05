@@ -1,0 +1,15 @@
+# Source: alloy
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alloy-config
+  namespace: alloy
+data:
+  alloy.cfg: |+
+    prometheus.remote_write "mimir" {
+      endpoint {
+        url = "http://mimir-nginx.mimir.svc/api/v1/push"
+      }
+    }
+
+...
