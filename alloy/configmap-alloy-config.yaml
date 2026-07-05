@@ -5,12 +5,15 @@ metadata:
   name: alloy-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: 74662c76917aa9ee
+    noa.re/deploy-id: acd34097e9b7feaa
 data:
   alloy.cfg: |
     prometheus.remote_write "mimir" {
       endpoint {
         url = "http://mimir-distributor.mimir.svc:8080/api/v1/push"
+        headers = {
+          "X-Scope-OrgID" = "anonymous",
+        }
       }
     }
 
