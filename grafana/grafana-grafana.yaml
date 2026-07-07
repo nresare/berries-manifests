@@ -5,7 +5,7 @@ metadata:
   name: grafana
   namespace: grafana
   annotations:
-    noa.re/deploy-id: a953a15bb20ed54e
+    noa.re/deploy-id: 2325c5de448faeab
 spec:
   persistentVolumeClaim:
     spec:
@@ -20,6 +20,16 @@ spec:
         noa.re/discover: enabled
       annotations:
         teleport.dev/name: grafana
+  deployment:
+    spec:
+      strategy:
+        type: Recreate
+      template:
+        spec:
+          volumes:
+          - name: grafana-data
+            persistentVolumeClaim:
+              claimName: grafana-pvc
   config:
     security:
       csrf_trusted_origins: grafana.teleport.noa.re
