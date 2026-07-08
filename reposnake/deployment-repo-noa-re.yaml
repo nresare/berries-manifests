@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: repo-noa-re
-        image: repo.noa.re/reposnake:0.2.1-776f0c4e
+        image: repo.noa.re/reposnake:0.2.1-1855f641
         args:
         - -c
         - /config/reposnake.toml
