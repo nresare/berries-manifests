@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: d3e30562295f8ee9
   name: cephblockpools.ceph.rook.io
 spec:
   group: ceph.rook.io
@@ -407,12 +407,10 @@ spec:
                     description: Details contains potential status errors
                     type: string
                   lastChanged:
-                    description: LastChanged is the last time time the status last
-                      changed
+                    description: LastChanged is the last time the status last changed
                     type: string
                   lastChecked:
-                    description: LastChecked is the last time time the status was
-                      checked
+                    description: LastChecked is the last time the status was checked
                     type: string
                   summary:
                     description: Summary is the mirroring status summary
@@ -542,12 +540,10 @@ spec:
                     description: Details contains potential status errors
                     type: string
                   lastChanged:
-                    description: LastChanged is the last time time the status last
-                      changed
+                    description: LastChanged is the last time the status last changed
                     type: string
                   lastChecked:
-                    description: LastChecked is the last time time the status was
-                      checked
+                    description: LastChecked is the last time the status was checked
                     type: string
                   snapshotSchedules:
                     description: SnapshotSchedules is the list of snapshots scheduled

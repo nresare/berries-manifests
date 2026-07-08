@@ -5,11 +5,11 @@ metadata:
   name: drivers.csi.ceph.io
   annotations:
     controller-gen.kubebuilder.io/version: v0.17.2
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: d3e30562295f8ee9
   labels:
     app.kubernetes.io/name: ceph-csi
     app.kubernetes.io/instance: rook
-    app.kubernetes.io/version: v1.0.1
+    app.kubernetes.io/version: v1.0.4
 spec:
   group: csi.ceph.io
   names:
@@ -1081,8 +1081,11 @@ spec:
                       For example, OpenShift with SELinux restrictions requires the pod to be privileged to write to hostPath.
                     type: boolean
                   replicas:
-                    description: Set replicas for controller plugin's deployment.
-                      Defaults to 2
+                    description: |-
+                      Set replicas for controller plugin's deployment.
+                      If not set, defaults to 2 or to the number of available nodes
+                      on single-node clusters. When OperatorConfig specifies a replica
+                      count, it is used as the default for all drivers.
                     format: int32
                     minimum: 1
                     type: integer

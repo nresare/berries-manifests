@@ -6,9 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/name: ceph-csi
     app.kubernetes.io/instance: rook
-    app.kubernetes.io/version: v1.0.1
+    app.kubernetes.io/version: v1.0.4
   annotations:
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: d3e30562295f8ee9
 rules:
 - apiGroups:
   - ''
@@ -22,6 +22,13 @@ rules:
   - list
   - patch
   - update
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - nodes
+  verbs:
+  - list
   - watch
 - apiGroups:
   - apps

@@ -8,7 +8,9 @@ metadata:
     control-plane: controller-manager
     app.kubernetes.io/name: ceph-csi
     app.kubernetes.io/instance: rook
-    app.kubernetes.io/version: v1.0.1
+    app.kubernetes.io/version: v1.0.4
+  annotations:
+    noa.re/deploy-id: d3e30562295f8ee9
 spec:
   replicas: 1
   selector:
@@ -41,7 +43,7 @@ spec:
           value: ''
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: cluster.local
-        image: quay.io/cephcsi/ceph-csi-operator:v1.0.1
+        image: quay.io/cephcsi/ceph-csi-operator:v1.0.4
         livenessProbe:
           httpGet:
             path: /healthz
