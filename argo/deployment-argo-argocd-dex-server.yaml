@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: v3.4.4
   annotations:
-    noa.re/deploy-id: 3059b9b4d00e23ca
+    noa.re/deploy-id: 7b05622923be70e7
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -22,7 +22,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cmd-params: d2c0183cd1a52237cfa8b6333fae52fc92cb63415214a3cdba81f04c8ca16f62
+        checksum/cmd-params: 5ba3dc4fdff8ad25e2bba59a519a450698f99b45a30495702dd06665bf72b64b
       labels:
         app.kubernetes.io/name: argocd-dex-server
         app.kubernetes.io/instance: argo

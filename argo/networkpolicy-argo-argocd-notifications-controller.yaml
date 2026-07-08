@@ -1,0 +1,26 @@
+# Source: argo
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: argo-argocd-notifications-controller
+  namespace: argo
+  labels:
+    app.kubernetes.io/name: argocd-notifications-controller
+    app.kubernetes.io/instance: argo
+    app.kubernetes.io/component: notifications-controller
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: v3.4.4
+  annotations:
+    noa.re/deploy-id: 7b05622923be70e7
+spec:
+  ingress:
+  - from:
+    - namespaceSelector: {}
+    ports:
+    - port: metrics
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-notifications-controller
+      app.kubernetes.io/instance: argo
+  policyTypes:
+  - Ingress
