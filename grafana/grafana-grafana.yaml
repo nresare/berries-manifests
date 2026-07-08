@@ -5,7 +5,7 @@ metadata:
   name: grafana
   namespace: grafana
   annotations:
-    noa.re/deploy-id: 2325c5de448faeab
+    noa.re/deploy-id: e6e20468f1e9eddc
 spec:
   persistentVolumeClaim:
     spec:
@@ -26,6 +26,8 @@ spec:
         type: Recreate
       template:
         spec:
+          securityContext:
+            fsGroup: 472
           volumes:
           - name: grafana-data
             persistentVolumeClaim:
