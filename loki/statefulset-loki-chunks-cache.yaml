@@ -10,6 +10,8 @@ metadata:
     app.kubernetes.io/component: memcached-chunks-cache
     name: memcached-chunks-cache
   namespace: loki
+  annotations:
+    noa.re/deploy-id: b90675615093c20b
 spec:
   podManagementPolicy: Parallel
   replicas: 1
@@ -51,15 +53,15 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 9830Mi
+            memory: 1020Mi
           requests:
             cpu: 500m
-            memory: 9830Mi
+            memory: 1020Mi
         ports:
         - containerPort: 11211
           name: client
         args:
-        - -m 8192
+        - -m 850
         - --extended=modern,track_sizes
         - -I 5m
         - -c 16384
