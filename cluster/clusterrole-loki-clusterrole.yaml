@@ -8,14 +8,5 @@ metadata:
     app.kubernetes.io/version: 3.7.3
   name: loki-clusterrole
   annotations:
-    noa.re/deploy-id: 7ad9637466e06a84
-rules:
-- apiGroups:
-  - ''
-  resources:
-  - configmaps
-  - secrets
-  verbs:
-  - get
-  - watch
-  - list
+    noa.re/deploy-id: 7a68a47ac9e4943e
+rules: []

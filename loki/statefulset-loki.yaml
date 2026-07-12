@@ -9,6 +9,8 @@ metadata:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/version: 3.7.3
     app.kubernetes.io/component: single-binary
+  annotations:
+    noa.re/deploy-id: 7a68a47ac9e4943e
 spec:
   replicas: 3
   podManagementPolicy: Parallel
@@ -68,10 +70,6 @@ spec:
       - name: runtime-config
         configMap:
           name: loki-runtime
-      - name: sc-rules-volume
-        emptyDir: {}
-      - name: sc-rules-temp
-        emptyDir: {}
       - name: tokens
         projected:
           sources:
@@ -147,66 +145,9 @@ spec:
           mountPath: /var/loki
         - name: temp
           mountPath: /tmp
-        - name: sc-rules-volume
-          mountPath: /rules
         - mountPath: /var/run/secrets/tokens
           name: tokens
           readOnly: true
-      - name: loki-sc-rules
-        image: docker.io/kiwigrid/k8s-sidecar:2.8.1
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name: http-sidecar
-          containerPort: 8080
-          protocol: TCP
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          readOnlyRootFilesystem: true
-          seccompProfile:
-            type: RuntimeDefault
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /healthz
-            port: http-sidecar
-          initialDelaySeconds: 30
-          periodSeconds: 30
-          successThreshold: 1
-          timeoutSeconds: 1
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /healthz
-            port: http-sidecar
-          initialDelaySeconds: 3
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        env:
-        - name: METHOD
-          value: WATCH
-        - name: LABEL
-          value: loki_rule
-        - name: FOLDER
-          value: /rules
-        - name: RESOURCE
-          value: both
-        - name: WATCH_SERVER_TIMEOUT
-          value: '60'
-        - name: WATCH_CLIENT_TIMEOUT
-          value: '60'
-        - name: LOG_LEVEL
-          value: INFO
-        - name: HEALTH_PORT
-          value: '8080'
-        volumeMounts:
-        - name: sc-rules-temp
-          mountPath: /tmp
-        - name: sc-rules-volume
-          mountPath: /rules
   volumeClaimTemplates:
   - apiVersion: v1
     kind: PersistentVolumeClaim
