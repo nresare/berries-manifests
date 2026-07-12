@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/version: 2.3.7
   namespace: surrealdb
   annotations:
-    noa.re/deploy-id: f29336b9718f2bf9
+    noa.re/deploy-id: 8f799e07c7e99276
 spec:
   strategy:
     type: Recreate
@@ -25,7 +25,8 @@ spec:
         app.kubernetes.io/instance: surrealdb
     spec:
       serviceAccountName: surrealdb
-      securityContext: {}
+      securityContext:
+        fsGroup: 65532
       containers:
       - name: surrealdb
         securityContext: {}
@@ -47,7 +48,7 @@ spec:
         - name: SURREAL_UNAUTHENTICATED
           value: 'false'
         - name: SURREAL_CAPS_ALLOW_NET
-          value: idmouse.idmouse.svc
+          value: idmouse.idmouse.svc,10.0.0.0/8
         ports:
         - name: http
           containerPort: 8000
@@ -62,22 +63,9 @@ spec:
             port: http
         resources: {}
         volumeMounts:
-        - &id001
-          name: data
+        - name: data
           mountPath: /data
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: surrealdb
-      initContainers:
-      - name: fix-permissions
-        image: alpine:3.24.1
-        command:
-        - /bin/sh
-        - -c
-        - |
-          mkdir -p /data/db &&
-          chown 65532:65532 /data/db &&
-          chmod u+rwx /data/db
-        volumeMounts:
-        - *id001
