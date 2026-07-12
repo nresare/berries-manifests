@@ -7,10 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/name: alloy
     app.kubernetes.io/instance: alloy
-    app.kubernetes.io/version: v1.17.0
+    app.kubernetes.io/version: v1.17.1
     app.kubernetes.io/part-of: alloy
   annotations:
-    noa.re/deploy-id: b214307417f7623d
+    noa.re/deploy-id: 051a24343c83bc08
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -30,7 +30,7 @@ spec:
       serviceAccountName: alloy
       containers:
       - name: alloy
-        image: docker.io/grafana/alloy:v1.17.0
+        image: docker.io/grafana/alloy:v1.17.1
         imagePullPolicy: IfNotPresent
         args:
         - run

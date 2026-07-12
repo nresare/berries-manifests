@@ -7,9 +7,11 @@ metadata:
   labels:
     app.kubernetes.io/name: alloy
     app.kubernetes.io/instance: alloy
-    app.kubernetes.io/version: v1.17.0
+    app.kubernetes.io/version: v1.17.1
     app.kubernetes.io/part-of: alloy
     app.kubernetes.io/component: networking
+  annotations:
+    noa.re/deploy-id: 051a24343c83bc08
 spec:
   type: ClusterIP
   selector:
