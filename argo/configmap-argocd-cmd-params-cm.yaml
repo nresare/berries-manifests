@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: v3.4.5
   annotations:
-    noa.re/deploy-id: 2c6002227311186b
+    noa.re/deploy-id: 0c27866d3436c38d
 data:
   applicationsetcontroller.enable.leader.election: 'false'
   applicationsetcontroller.log.format: text
@@ -28,8 +28,6 @@ data:
   repo.server: argocd-repo-server:8081
   reposerver.log.format: text
   reposerver.log.level: info
-  server.dex.server: https://argocd-dex-server:5556
-  server.dex.server.strict.tls: 'false'
   server.insecure: 'true'
   server.log.format: text
   server.log.level: info
