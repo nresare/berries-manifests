@@ -1,7 +1,6 @@
 # Source: argocd
 apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
+kind: Service
 metadata:
   name: argocd-dex-server
   namespace: argo
@@ -13,3 +12,16 @@ metadata:
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5556
+    targetPort: http
+  - name: grpc
+    protocol: TCP
+    port: 5557
+    targetPort: grpc
+  selector:
+    app.kubernetes.io/name: argocd-dex-server
+    app.kubernetes.io/instance: argocd

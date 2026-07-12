@@ -1,10 +1,8 @@
 # Source: argocd
-apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
 metadata:
   name: argocd-application-controller
-  namespace: argo
   labels:
     app.kubernetes.io/name: argocd-application-controller
     app.kubernetes.io/instance: argocd
@@ -13,3 +11,14 @@ metadata:
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- nonResourceURLs:
+  - '*'
+  verbs:
+  - '*'

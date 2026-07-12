@@ -1,7 +1,6 @@
 # Source: argocd
 apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
+kind: Service
 metadata:
   name: argocd-applicationset-controller
   namespace: argo
@@ -13,3 +12,12 @@ metadata:
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
+spec:
+  type: ClusterIP
+  ports:
+  - name: http-webhook
+    port: 7000
+    targetPort: webhook
+  selector:
+    app.kubernetes.io/name: argocd-applicationset-controller
+    app.kubernetes.io/instance: argocd

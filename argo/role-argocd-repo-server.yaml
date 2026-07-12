@@ -1,15 +1,15 @@
 # Source: argocd
-apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
-  name: argocd-server
+  name: argocd-repo-server
   namespace: argo
   labels:
-    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/instance: argocd
-    app.kubernetes.io/component: server
+    app.kubernetes.io/component: repo-server
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
+rules: null

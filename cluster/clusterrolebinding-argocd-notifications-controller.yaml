@@ -1,9 +1,8 @@
 # Source: argocd
-apiVersion: v1
-kind: Secret
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: argocd-notifications-secret
-  namespace: argo
+  name: argocd-notifications-controller
   labels:
     app.kubernetes.io/name: argocd-notifications-controller
     app.kubernetes.io/instance: argocd
@@ -12,5 +11,11 @@ metadata:
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
-type: Opaque
-stringData: null
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argocd-notifications-controller
+subjects:
+- kind: ServiceAccount
+  name: argocd-notifications-controller
+  namespace: argo

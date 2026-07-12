@@ -1,8 +1,8 @@
 # Source: argocd
-apiVersion: v1
-kind: Secret
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
 metadata:
-  name: argocd-notifications-secret
+  name: argocd-notifications-controller
   namespace: argo
   labels:
     app.kubernetes.io/name: argocd-notifications-controller
@@ -12,5 +12,15 @@ metadata:
     app.kubernetes.io/version: v3.4.5
   annotations:
     noa.re/deploy-id: 2c6002227311186b
-type: Opaque
-stringData: null
+spec:
+  ingress:
+  - from:
+    - namespaceSelector: {}
+    ports:
+    - port: metrics
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-notifications-controller
+      app.kubernetes.io/instance: argocd
+  policyTypes:
+  - Ingress
