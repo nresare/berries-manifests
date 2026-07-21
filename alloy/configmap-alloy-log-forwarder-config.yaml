@@ -5,12 +5,15 @@ metadata:
   name: alloy-log-forwarder-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: 898108d739d7b1e6
+    noa.re/deploy-id: 24926723caa3f5eb
 data:
   log-forwarder.cfg: |
     loki.write "central" {
       endpoint {
         url = "http://loki.loki.svc:3100/loki/api/v1/push"
+        headers = {
+          "X-Scope-OrgID" = "anonymous",
+        }
       }
     }
 
