@@ -1,0 +1,25 @@
+# Source: alloy
+apiVersion: v1
+kind: Service
+metadata:
+  name: alloy-log-forwarder
+  namespace: alloy
+  labels:
+    app.kubernetes.io/name: alloy
+    app.kubernetes.io/instance: alloy-log-forwarder
+    app.kubernetes.io/version: v1.17.1
+    app.kubernetes.io/part-of: alloy
+    app.kubernetes.io/component: networking
+  annotations:
+    noa.re/deploy-id: 898108d739d7b1e6
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: alloy
+    app.kubernetes.io/instance: alloy-log-forwarder
+  internalTrafficPolicy: Cluster
+  ports:
+  - name: http-metrics
+    port: 12345
+    targetPort: 12345
+    protocol: TCP

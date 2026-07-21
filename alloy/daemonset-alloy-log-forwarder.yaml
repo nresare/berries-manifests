@@ -1,40 +1,38 @@
 # Source: alloy
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: alloy
+  name: alloy-log-forwarder
   namespace: alloy
   labels:
     app.kubernetes.io/name: alloy
-    app.kubernetes.io/instance: alloy
+    app.kubernetes.io/instance: alloy-log-forwarder
     app.kubernetes.io/version: v1.17.1
     app.kubernetes.io/part-of: alloy
   annotations:
     noa.re/deploy-id: 898108d739d7b1e6
 spec:
-  replicas: 1
   minReadySeconds: 10
   selector:
     matchLabels:
       app.kubernetes.io/name: alloy
-      app.kubernetes.io/instance: alloy
+      app.kubernetes.io/instance: alloy-log-forwarder
   template:
     metadata:
       annotations:
         kubectl.kubernetes.io/default-container: alloy
-        checksum/config: 6e71a5c96291ceeeab36bba996608e174bd0265cd5009d2356d5886213d5ce0d
       labels:
         app.kubernetes.io/name: alloy
-        app.kubernetes.io/instance: alloy
+        app.kubernetes.io/instance: alloy-log-forwarder
     spec:
-      serviceAccountName: alloy
+      serviceAccountName: alloy-log-forwarder
       containers:
       - name: alloy
         image: docker.io/grafana/alloy:v1.17.1
         imagePullPolicy: IfNotPresent
         args:
         - run
-        - /etc/alloy/metrics.cfg
+        - /etc/alloy/log-forwarder.cfg
         - --storage.path=/tmp/alloy
         - --server.http.listen-addr=0.0.0.0:12345
         - --server.http.ui-path-prefix=/
@@ -63,6 +61,15 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/alloy
+        - name: varlog
+          mountPath: /var/log
+          readOnly: true
+        - name: dockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+        - mountPath: /run/log/journal
+          name: run-log-journal
+          readOnly: true
       - name: config-reloader
         image: quay.io/prometheus-operator/prometheus-config-reloader:v0.91.0@sha256:7d9e4eea5f1139e602508871f422b0116c60e87c662f3dcd234d5ab60cd0d8c1
         imagePullPolicy: IfNotPresent
@@ -80,4 +87,14 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: alloy-config
+          name: alloy-log-forwarder-config
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: dockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
+      - hostPath:
+          path: /run/log/journal
+          type: DirectoryOrCreate
+        name: run-log-journal
