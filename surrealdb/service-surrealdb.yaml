@@ -6,8 +6,10 @@ metadata:
   labels:
     app.kubernetes.io/name: surrealdb
     app.kubernetes.io/instance: surrealdb
-    app.kubernetes.io/version: 2.3.7
+    app.kubernetes.io/version: 2.6.5
   namespace: surrealdb
+  annotations:
+    noa.re/deploy-id: 7648f36f7dfd32e6
 spec:
   type: ClusterIP
   ports:
