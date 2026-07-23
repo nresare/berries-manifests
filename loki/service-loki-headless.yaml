@@ -12,7 +12,7 @@ metadata:
     prometheus.io/service-monitor: 'false'
     variant: headless
   annotations:
-    noa.re/deploy-id: e53a30f2fe20d44a
+    noa.re/deploy-id: a9c897b71561fb85
 spec:
   clusterIP: None
   type: ClusterIP
