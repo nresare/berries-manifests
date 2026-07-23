@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/version: 3.7.4
   annotations:
-    noa.re/deploy-id: b78f91db0ae34a7a
+    noa.re/deploy-id: e53a30f2fe20d44a
 spec:
   type: ClusterIP
   clusterIP: None
