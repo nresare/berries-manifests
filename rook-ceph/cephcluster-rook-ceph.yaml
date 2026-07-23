@@ -5,10 +5,10 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph
   annotations:
-    noa.re/deploy-id: dbdf99c6dd26f171
+    noa.re/deploy-id: e8f4ae8eee8fe0cb
 spec:
   cephVersion:
-    image: quay.io/ceph/ceph:v20.2.2
+    image: quay.io/ceph/ceph:v21.1
     allowUnsupported: false
   dataDirHostPath: /var/lib/rook
   skipUpgradeChecks: false
