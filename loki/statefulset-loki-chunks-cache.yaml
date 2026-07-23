@@ -6,12 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: loki
     app.kubernetes.io/instance: loki
-    app.kubernetes.io/version: 3.7.3
+    app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: memcached-chunks-cache
     name: memcached-chunks-cache
   namespace: loki
   annotations:
-    noa.re/deploy-id: b90675615093c20b
+    noa.re/deploy-id: b78f91db0ae34a7a
 spec:
   podManagementPolicy: Parallel
   replicas: 1

@@ -7,11 +7,12 @@ metadata:
   labels:
     app.kubernetes.io/name: loki
     app.kubernetes.io/instance: loki
-    app.kubernetes.io/version: 3.7.3
+    app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: single-binary
     prometheus.io/service-monitor: 'false'
     variant: headless
-  annotations: null
+  annotations:
+    noa.re/deploy-id: b78f91db0ae34a7a
 spec:
   clusterIP: None
   type: ClusterIP

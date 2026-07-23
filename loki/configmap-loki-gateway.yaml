@@ -7,8 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/name: loki
     app.kubernetes.io/instance: loki
-    app.kubernetes.io/version: 3.7.3
+    app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: gateway
+  annotations:
+    noa.re/deploy-id: b78f91db0ae34a7a
 data:
   nginx.conf: "worker_processes  5;  ## Default: 1\nerror_log  /dev/stderr;\npid \
     \       /tmp/nginx.pid;\nworker_rlimit_nofile 8192;\n\nevents {\n  worker_connections\
