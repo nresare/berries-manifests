@@ -7,10 +7,10 @@ metadata:
     app.kubernetes.io/name: teleport-cluster
     app.kubernetes.io/instance: teleport-cluster
     app.kubernetes.io/component: auth
-    app.kubernetes.io/version: 18.10.0
+    app.kubernetes.io/version: 18.10.1
     teleport.dev/majorVersion: '18'
   annotations:
-    noa.re/deploy-id: 61d719c1fd165e73
+    noa.re/deploy-id: 8a86dcb93fe30b07
 rules:
 - apiGroups:
   - ''
