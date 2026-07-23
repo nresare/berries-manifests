@@ -6,9 +6,9 @@ metadata:
   labels:
     app.kubernetes.io/name: gateway-helm
     app.kubernetes.io/instance: envoy-gateway
-    app.kubernetes.io/version: v1.8.2
+    app.kubernetes.io/version: v1.8.3
   annotations:
-    noa.re/deploy-id: e28dad1ceada8726
+    noa.re/deploy-id: 2a8c7d1fb466e925
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
