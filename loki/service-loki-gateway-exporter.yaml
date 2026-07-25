@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: gateway
   annotations:
-    noa.re/deploy-id: 9e3c05fb973dbc9b
+    noa.re/deploy-id: 9dbc7db9a183d339
 spec:
   type: ClusterIP
   ports:
