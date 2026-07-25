@@ -1,0 +1,24 @@
+# Source: trust-manager
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: trust-manager
+  namespace: cert-manager
+  labels:
+    app.kubernetes.io/name: trust-manager
+    app.kubernetes.io/instance: trust-manager
+    app.kubernetes.io/version: v0.24.0
+  annotations:
+    noa.re/deploy-id: 9e3c05fb973dbc9b
+spec:
+  commonName: trust-manager.cert-manager.svc
+  dnsNames:
+  - trust-manager.cert-manager.svc
+  secretName: trust-manager-tls
+  privateKey:
+    rotationPolicy: Always
+  revisionHistoryLimit: 1
+  issuerRef:
+    name: trust-manager
+    kind: Issuer
+    group: cert-manager.io
