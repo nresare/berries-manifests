@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: single-binary
   annotations:
-    noa.re/deploy-id: a8dce8ec37eaf4a0
+    noa.re/deploy-id: c33d32fed297198e
 spec:
   type: ClusterIP
   publishNotReadyAddresses: true

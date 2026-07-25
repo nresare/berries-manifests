@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/zq.lu
-    noa.re/deploy-id: 7f11376a3cab8fa1
+    noa.re/deploy-id: c33d32fed297198e
 spec:
   replicas: 2
   selector:
@@ -22,31 +22,17 @@ spec:
       containers:
       - env:
         - name: SERVER_PORT
-          value: '8443'
-        - name: SERVER_HTTP2_TLS
-          value: 'true'
-        - name: SERVER_HTTP2_TLS_CERT
-          value: /tls/tls.crt
-        - name: SERVER_HTTP2_TLS_KEY
-          value: /tls/tls.key
+          value: '8080'
         name: web
         image: ghcr.io/static-web-server/static-web-server:2.43
-        ports:
-        - containerPort: 8443
-          name: https
-          protocol: TCP
         volumeMounts:
         - mountPath: /public
           name: public
           readOnly: true
-        - mountPath: /tls
-          name: tls
-          readOnly: true
         livenessProbe:
           httpGet:
             path: /
-            port: https
-            scheme: HTTPS
+            port: 8080
       initContainers:
       - name: git
         image: alpine/git:v2.54.0
@@ -74,6 +60,3 @@ spec:
         emptyDir: {}
       - name: public
         emptyDir: {}
-      - name: tls
-        secret:
-          secretName: zq-lu-internal-tls

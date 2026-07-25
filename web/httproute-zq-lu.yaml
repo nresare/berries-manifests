@@ -4,6 +4,8 @@ kind: HTTPRoute
 metadata:
   name: zq-lu
   namespace: web
+  annotations:
+    noa.re/deploy-id: c33d32fed297198e
 spec:
   parentRefs:
   - name: zq-lu
@@ -14,7 +16,7 @@ spec:
   rules:
   - backendRefs:
     - name: zq-lu
-      port: 443
+      port: 80
       group: ''
       kind: Service
       weight: 1

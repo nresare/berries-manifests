@@ -3,6 +3,9 @@ apiVersion: trust.cert-manager.io/v1alpha1
 kind: Bundle
 metadata:
   name: cluster-local-ca
+  namespace: cert-manager
+  annotations:
+    noa.re/deploy-id: c33d32fed297198e
 spec:
   sources:
   - secret:

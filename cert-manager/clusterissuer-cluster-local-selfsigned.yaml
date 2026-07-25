@@ -3,5 +3,8 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: cluster-local-selfsigned
+  namespace: cert-manager
+  annotations:
+    noa.re/deploy-id: c33d32fed297198e
 spec:
   selfSigned: {}
