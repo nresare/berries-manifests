@@ -8,6 +8,8 @@ spec:
   selector:
     app: zq-lu
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+  - name: https
+    appProtocol: https
+    protocol: TCP
+    port: 443
+    targetPort: https

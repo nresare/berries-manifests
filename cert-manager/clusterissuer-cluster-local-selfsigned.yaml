@@ -1,0 +1,7 @@
+# Source: cert-manager
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cluster-local-selfsigned
+spec:
+  selfSigned: {}

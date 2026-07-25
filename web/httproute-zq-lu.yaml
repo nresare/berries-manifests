@@ -14,7 +14,7 @@ spec:
   rules:
   - backendRefs:
     - name: zq-lu
-      port: 80
+      port: 443
       group: ''
       kind: Service
       weight: 1
