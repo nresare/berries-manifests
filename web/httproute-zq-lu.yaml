@@ -5,7 +5,7 @@ metadata:
   name: zq-lu
   namespace: web
   annotations:
-    noa.re/deploy-id: c33d32fed297198e
+    noa.re/deploy-id: 995387ff6f743f55
 spec:
   parentRefs:
   - name: zq-lu
@@ -16,7 +16,7 @@ spec:
   rules:
   - backendRefs:
     - name: zq-lu
-      port: 80
+      port: 443
       group: ''
       kind: Service
       weight: 1

@@ -4,6 +4,8 @@ kind: HTTPRoute
 metadata:
   name: noa-re
   namespace: web
+  annotations:
+    noa.re/deploy-id: 995387ff6f743f55
 spec:
   parentRefs:
   - name: noa-re
@@ -15,7 +17,7 @@ spec:
   rules:
   - backendRefs:
     - name: noa-re
-      port: 80
+      port: 443
       group: ''
       kind: Service
       weight: 1

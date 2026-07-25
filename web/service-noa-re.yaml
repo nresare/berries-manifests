@@ -4,10 +4,14 @@ kind: Service
 metadata:
   name: noa-re
   namespace: web
+  annotations:
+    noa.re/deploy-id: 995387ff6f743f55
 spec:
   selector:
     app: noa-re
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+  - name: https
+    appProtocol: https
+    protocol: TCP
+    port: 443
+    targetPort: https

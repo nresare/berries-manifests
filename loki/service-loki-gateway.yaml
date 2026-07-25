@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/component: gateway
     prometheus.io/service-monitor: 'false'
   annotations:
-    noa.re/deploy-id: c33d32fed297198e
+    noa.re/deploy-id: 995387ff6f743f55
 spec:
   type: ClusterIP
   ports:
