@@ -5,7 +5,7 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph
   annotations:
-    noa.re/deploy-id: 9ecddf4c33adfe85
+    noa.re/deploy-id: 7653cd7ca2eb164d
 spec:
   cephVersion:
     image: quay.io/ceph/ceph:v20.2.2
@@ -67,9 +67,9 @@ spec:
         memory: 1Gi
     osd:
       requests:
-        memory: 800Mi
-      limits:
         memory: 1Gi
+      limits:
+        memory: 1.5Gi
   removeOSDsIfOutAndSafeToRemove: false
   priorityClassNames:
     mon: system-node-critical
