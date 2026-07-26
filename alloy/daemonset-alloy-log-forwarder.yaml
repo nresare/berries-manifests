@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: v1.18.0
     app.kubernetes.io/part-of: alloy
   annotations:
-    noa.re/deploy-id: e53a30f2fe20d44a
+    noa.re/deploy-id: b1e1cad41b0ef36c
 spec:
   minReadySeconds: 10
   selector:
@@ -70,6 +70,9 @@ spec:
         - mountPath: /run/log/journal
           name: run-log-journal
           readOnly: true
+        - mountPath: /etc/machine-id
+          name: machine-id
+          readOnly: true
       - name: config-reloader
         image: quay.io/prometheus-operator/prometheus-config-reloader:v0.91.0@sha256:7d9e4eea5f1139e602508871f422b0116c60e87c662f3dcd234d5ab60cd0d8c1
         imagePullPolicy: IfNotPresent
@@ -98,3 +101,7 @@ spec:
           path: /run/log/journal
           type: DirectoryOrCreate
         name: run-log-journal
+      - hostPath:
+          path: /etc/machine-id
+          type: File
+        name: machine-id

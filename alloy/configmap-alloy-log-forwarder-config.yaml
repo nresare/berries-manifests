@@ -5,7 +5,7 @@ metadata:
   name: alloy-log-forwarder-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: 24926723caa3f5eb
+    noa.re/deploy-id: b1e1cad41b0ef36c
 data:
   log-forwarder.cfg: |
     loki.write "central" {
@@ -56,11 +56,22 @@ data:
       forward_to = [loki.write.central.receiver]
     }
 
+    loki.relabel "journal" {
+      forward_to = []
+
+      rule {
+        source_labels = ["__journal__hostname"]
+        target_label  = "node"
+      }
+    }
+
     loki.source.journal "kubelite" {
-      forward_to = [loki.write.central.receiver]
-      matches    = "_SYSTEMD_UNIT=snap.microk8s.daemon-kubelite.service"
-      labels     = {
-        service = "kubelite",
-        unit    = "snap.microk8s.daemon-kubelite.service",
+      forward_to    = [loki.write.central.receiver]
+      matches       = "_SYSTEMD_UNIT=snap.microk8s.daemon-kubelite.service"
+      path          = "/var/log/journal"
+      relabel_rules = loki.relabel.journal.rules
+      labels        = {
+        service_name = "kubelite",
+        unit         = "snap.microk8s.daemon-kubelite.service",
       }
     }
