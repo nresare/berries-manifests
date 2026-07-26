@@ -5,7 +5,7 @@ metadata:
   name: alloy-log-forwarder-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: b1e1cad41b0ef36c
+    noa.re/deploy-id: f050f943737a19de
 data:
   log-forwarder.cfg: |
     loki.write "central" {
@@ -13,6 +13,18 @@ data:
         url = "http://loki.loki.svc:3100/loki/api/v1/push"
         headers = {
           "X-Scope-OrgID" = "anonymous",
+        }
+      }
+    }
+
+    loki.process "truncate_oversized" {
+      forward_to = [loki.write.central.receiver]
+
+      stage.truncate {
+        rule {
+          limit       = "250KiB"
+          source_type = "line"
+          suffix      = "... [truncated by Alloy]"
         }
       }
     }
@@ -53,7 +65,7 @@ data:
 
     loki.source.kubernetes "pod_logs" {
       targets    = discovery.relabel.pod_logs.output
-      forward_to = [loki.write.central.receiver]
+      forward_to = [loki.process.truncate_oversized.receiver]
     }
 
     loki.relabel "journal" {
@@ -66,7 +78,7 @@ data:
     }
 
     loki.source.journal "kubelite" {
-      forward_to    = [loki.write.central.receiver]
+      forward_to    = [loki.process.truncate_oversized.receiver]
       matches       = "_SYSTEMD_UNIT=snap.microk8s.daemon-kubelite.service"
       path          = "/var/log/journal"
       relabel_rules = loki.relabel.journal.rules
