@@ -5,7 +5,7 @@ metadata:
   name: alloy-config
   namespace: alloy
   annotations:
-    noa.re/deploy-id: 898108d739d7b1e6
+    noa.re/deploy-id: e2f058a8a04a7fc4
 data:
   metrics.cfg: |
     prometheus.remote_write "mimir" {
@@ -15,6 +15,10 @@ data:
           "X-Scope-OrgID" = "anonymous",
         }
       }
+    }
+
+    prometheus.operator.servicemonitors "services" {
+      forward_to = [prometheus.remote_write.mimir.receiver]
     }
 
     prometheus.scrape "static_hosts" {

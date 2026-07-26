@@ -1,0 +1,15 @@
+# Source: kube-state-metrics
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-state-metrics
+  namespace: kube-state-metrics
+  annotations:
+    noa.re/deploy-id: e2f058a8a04a7fc4
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: kube-state-metrics
+      app.kubernetes.io/name: kube-state-metrics
+  endpoints:
+  - port: http
