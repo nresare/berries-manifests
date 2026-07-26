@@ -5,7 +5,7 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph
   annotations:
-    noa.re/deploy-id: c38b1afa78b1675c
+    noa.re/deploy-id: 71012d95b74ef2d0
 spec:
   cephVersion:
     image: quay.io/ceph/ceph:v20.2.2
@@ -53,8 +53,12 @@ spec:
       dataSource: zero
       iteration: 1
     allowUninstallWithVolumes: false
-  annotations: null
-  labels: null
+  annotations:
+    dashboard:
+      teleport.dev/port: http-dashboard
+  labels:
+    dashboard:
+      noa.re/discover: enabled
   resources: null
   removeOSDsIfOutAndSafeToRemove: false
   priorityClassNames:
