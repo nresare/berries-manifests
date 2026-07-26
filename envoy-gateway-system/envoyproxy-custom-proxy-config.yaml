@@ -4,6 +4,8 @@ kind: EnvoyProxy
 metadata:
   name: custom-proxy-config
   namespace: envoy-gateway-system
+  annotations:
+    noa.re/deploy-id: b590c0f9351db85f
 spec:
   mergeGateways: true
   provider:
@@ -12,3 +14,18 @@ spec:
       envoyService:
         type: NodePort
         externalTrafficPolicy: Cluster
+        patch:
+          type: JSONMerge
+          value:
+            spec:
+              ports:
+              - name: https-443
+                port: 443
+                protocol: TCP
+                targetPort: 10443
+                nodePort: 31071
+              - name: https-443-udp
+                port: 443
+                protocol: UDP
+                targetPort: 10443
+                nodePort: 31071
