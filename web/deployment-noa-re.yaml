@@ -8,7 +8,7 @@ metadata:
   namespace: web
   annotations:
     hugo: https://github.com/nresare/noa.re
-    noa.re/deploy-id: 995387ff6f743f55
+    noa.re/deploy-id: 559de79bef1c4143
 spec:
   replicas: 2
   selector:
@@ -30,7 +30,7 @@ spec:
         - name: SERVER_HTTP2_TLS_KEY
           value: /tls/tls.key
         name: web
-        image: ghcr.io/static-web-server/static-web-server:2.43
+        image: ghcr.io/static-web-server/static-web-server:2.44
         ports:
         - containerPort: 8443
           name: https
