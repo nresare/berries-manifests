@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: 3.7.4
     app.kubernetes.io/component: gateway
   annotations:
-    noa.re/deploy-id: a8dce8ec37eaf4a0
+    noa.re/deploy-id: d2c53ea947e28f6c
 spec:
   replicas: 1
   strategy:
@@ -71,7 +71,7 @@ spec:
         - name: docker-entrypoint-d-override
           mountPath: /docker-entrypoint.d
       - name: exporter
-        image: ghcr.io/jkroepke/access-log-exporter:0.4.8
+        image: ghcr.io/jkroepke/access-log-exporter:0.4.9
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4040
