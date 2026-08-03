@@ -7,7 +7,7 @@ metadata:
     app: idmouse
   namespace: idmouse
   annotations:
-    noa.re/deploy-id: de753f491ccfd3ff
+    noa.re/deploy-id: c860b0ee40f2212d
 spec:
   replicas: 2
   selector:
@@ -18,12 +18,12 @@ spec:
       labels:
         app: idmouse
       annotations:
-        checksum/config: 3a6ffc60feb926f94720b240a010193443706fde5767cf91b09eb49b7a79e3c9
+        checksum/config: 09f47d85ff7ecfe6837ce66d5a991d5cbb733b5142e071e9462e7466d9d9ac4b
     spec:
       serviceAccountName: idmouse
       containers:
       - name: idmouse
-        image: repo.noa.re/idmouse:0.2.1-8718c605
+        image: repo.noa.re/idmouse:0.2.1-6af3c2de
         ports:
         - name: http
           containerPort: 8080
