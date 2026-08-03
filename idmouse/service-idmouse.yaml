@@ -4,8 +4,10 @@ kind: Service
 metadata:
   name: idmouse
   namespace: idmouse
+  annotations:
+    noa.re/deploy-id: 90a9a159b514b346
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: idmouse
   ports:
