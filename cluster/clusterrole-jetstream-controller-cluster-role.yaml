@@ -1,0 +1,50 @@
+# Source: nack
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: jetstream-controller-cluster-role
+  labels:
+    app: nack
+    chart: nack-0.34.0_noa
+  annotations:
+    noa.re/deploy-id: d855a890c83e72cb
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - create
+  - update
+  - patch
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups:
+  - jetstream.nats.io
+  resources:
+  - streams
+  - streams/status
+  - objectstores
+  - objectstores/status
+  - keyvalues
+  - keyvalues/status
+  - consumers
+  - consumers/status
+  - streamtemplates
+  - streamtemplates/status
+  - accounts
+  - accounts/status
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - patch
+  - update
+  - delete
