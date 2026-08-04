@@ -7,7 +7,7 @@ metadata:
     app: relcoord-noa-re
   namespace: relcoord
   annotations:
-    noa.re/deploy-id: a3d187f96bee7a57
+    noa.re/deploy-id: 00ee1cf77d245aff
 spec:
   replicas: 2
   selector:
@@ -18,7 +18,7 @@ spec:
       labels:
         app: relcoord-noa-re
       annotations:
-        checksum/config: 9c07a352fd27f4159da4730b3ced26cebc4e12f234bb9eb70ff928f5a30bba35
+        checksum/config: 207eed6e8ecf8fa6ec0bbec4810cc3c618ad93b83d594bc4e38ec35d6663e23e
     spec:
       containers:
       - name: relcoord-noa-re

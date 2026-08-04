@@ -5,10 +5,10 @@ metadata:
   name: relcoord-noa-re-config
   namespace: relcoord
   annotations:
-    noa.re/deploy-id: d8808a8581bfd825
+    noa.re/deploy-id: 00ee1cf77d245aff
 data:
   relcoord.toml: |
-    host = "0.0.0.0"
+    listen = "0.0.0.0"
     port = 8080
 
     [persistence]
