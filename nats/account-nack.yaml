@@ -1,0 +1,11 @@
+# Source: nack
+apiVersion: jetstream.nats.io/v1beta2
+kind: Account
+metadata:
+  name: nack
+  namespace: nats
+  annotations:
+    noa.re/deploy-id: ce040ce12644cbf8
+spec:
+  token:
+    file: /var/run/secrets/tokens/nats
