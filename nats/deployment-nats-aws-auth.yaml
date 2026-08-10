@@ -7,9 +7,9 @@ metadata:
     app: nats-aws-auth
   namespace: nats
   annotations:
-    noa.re/deploy-id: 20148e114bee6465
+    noa.re/deploy-id: ab75e836c6f5175f
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nats-aws-auth
