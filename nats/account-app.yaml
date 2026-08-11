@@ -2,10 +2,10 @@
 apiVersion: jetstream.nats.io/v1beta2
 kind: Account
 metadata:
-  name: nack
+  name: app
   namespace: nats
   annotations:
-    noa.re/deploy-id: ce040ce12644cbf8
+    noa.re/deploy-id: bca96d97e47ff2fc
 spec:
   token:
     file: /var/run/secrets/tokens/nats

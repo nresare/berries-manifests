@@ -5,7 +5,7 @@ metadata:
   name: github-events
   namespace: nats
   annotations:
-    noa.re/deploy-id: ab75e836c6f5175f
+    noa.re/deploy-id: bca96d97e47ff2fc
 spec:
   name: github-events
   subjects:
@@ -13,3 +13,4 @@ spec:
   storage: file
   maxAge: 1h
   replicas: 3
+  account: app

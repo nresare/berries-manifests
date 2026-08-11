@@ -5,10 +5,11 @@ metadata:
   name: argo-poker
   namespace: nats
   annotations:
-    noa.re/deploy-id: ab75e836c6f5175f
+    noa.re/deploy-id: bca96d97e47ff2fc
 spec:
   streamName: github-events
   durableName: argo-poker
   filterSubjects: idcat.github.events.push.portswigger-cloud.manifests
   ackPolicy: explicit
   deliveryPolicy: last
+  account: app
