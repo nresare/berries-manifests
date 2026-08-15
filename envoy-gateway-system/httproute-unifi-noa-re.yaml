@@ -5,7 +5,7 @@ metadata:
   name: unifi-noa-re
   namespace: envoy-gateway-system
   annotations:
-    noa.re/deploy-id: bbd400b3e174d203
+    noa.re/deploy-id: 3febb975fe01cad5
 spec:
   parentRefs:
   - name: unifi-noa-re
@@ -15,7 +15,6 @@ spec:
   - unifi.noa.re
   rules:
   - backendRefs:
-    - group: ''
-      kind: Service
+    - group: gateway.envoyproxy.io
+      kind: Backend
       name: unifi-noa-re
-      port: 443

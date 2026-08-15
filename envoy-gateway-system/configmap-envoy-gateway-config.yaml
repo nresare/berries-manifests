@@ -9,12 +9,13 @@ metadata:
     app.kubernetes.io/instance: envoy-gateway
     app.kubernetes.io/version: v1.8.3
   annotations:
-    noa.re/deploy-id: 2a8c7d1fb466e925
+    noa.re/deploy-id: 3febb975fe01cad5
 data:
   envoy-gateway.yaml: |
     apiVersion: gateway.envoyproxy.io/v1alpha1
     kind: EnvoyGateway
-    extensionApis: {}
+    extensionApis:
+      enableBackend: true
     gateway:
       controllerName: gateway.envoyproxy.io/gatewayclass-controller
     logging:

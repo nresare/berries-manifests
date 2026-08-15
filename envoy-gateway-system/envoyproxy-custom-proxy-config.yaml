@@ -5,12 +5,14 @@ metadata:
   name: custom-proxy-config
   namespace: envoy-gateway-system
   annotations:
-    noa.re/deploy-id: b590c0f9351db85f
+    noa.re/deploy-id: 3febb975fe01cad5
 spec:
   mergeGateways: true
   provider:
     type: Kubernetes
     kubernetes:
+      envoyDeployment:
+        replicas: 2
       envoyService:
         type: NodePort
         externalTrafficPolicy: Cluster

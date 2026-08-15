@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/instance: envoy-gateway
     app.kubernetes.io/version: v1.8.3
   annotations:
-    noa.re/deploy-id: 2a8c7d1fb466e925
+    noa.re/deploy-id: 3febb975fe01cad5
 spec:
   replicas: 1
   selector:
@@ -21,6 +21,7 @@ spec:
   template:
     metadata:
       annotations:
+        noa.re/envoy-gateway-config-revision: enable-backend-api
         prometheus.io/port: '19001'
         prometheus.io/scrape: 'true'
       labels:
