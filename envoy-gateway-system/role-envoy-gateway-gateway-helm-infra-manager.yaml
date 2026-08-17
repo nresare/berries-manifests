@@ -7,9 +7,9 @@ metadata:
   labels:
     app.kubernetes.io/name: gateway-helm
     app.kubernetes.io/instance: envoy-gateway
-    app.kubernetes.io/version: v1.8.3
+    app.kubernetes.io/version: v1.9.0
   annotations:
-    noa.re/deploy-id: 2a8c7d1fb466e925
+    noa.re/deploy-id: 0268f12f4f7f0388
 rules:
 - apiGroups:
   - ''
@@ -40,9 +40,19 @@ rules:
   - watch
 - apiGroups:
   - autoscaling
-  - policy
   resources:
   - horizontalpodautoscalers
+  verbs:
+  - create
+  - get
+  - list
+  - delete
+  - deletecollection
+  - patch
+  - watch
+- apiGroups:
+  - policy
+  resources:
   - poddisruptionbudgets
   verbs:
   - create

@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     api-approved.kubernetes.io: https://github.com/kubernetes-sigs/gateway-api/pull/4530
-    gateway.networking.k8s.io/bundle-version: v1.5.1
+    gateway.networking.k8s.io/bundle-version: v1.6.1
     gateway.networking.k8s.io/channel: experimental
-    noa.re/deploy-id: 0e4f2eae58209344
+    noa.re/deploy-id: 0268f12f4f7f0388
   labels:
     gateway.networking.k8s.io/policy: Direct
   name: backendtlspolicies.gateway.networking.k8s.io
@@ -116,12 +116,12 @@ spec:
 
                   Support Levels:
 
-                  * Extended: Kubernetes Service referenced by HTTPRoute backendRefs.
+                  * Extended: Kubernetes Service referenced by backendRefs used on a Route.
+                    - HTTPRoute, GRPCRoute, TLSRoute with termination
+                    - Filters that needs a backend of type Service, like Mirror and External Authorization
 
-                  * Implementation-Specific: Services not connected via HTTPRoute, and any
-                    other kind of backend. Implementations MAY use BackendTLSPolicy for:
+                  * Implementation-Specific: Implementations MAY use BackendTLSPolicy for:
                     - Services not referenced by any Route (e.g., infrastructure services)
-                    - Gateway feature backends (e.g., ExternalAuth, rate-limiting services)
                     - Service mesh workload-to-service communication
                     - Other resource types beyond Service
 
@@ -810,12 +810,12 @@ spec:
 
                   Support Levels:
 
-                  * Extended: Kubernetes Service referenced by HTTPRoute backendRefs.
+                  * Extended: Kubernetes Service referenced by backendRefs used on a Route.
+                    - HTTPRoute, GRPCRoute, TLSRoute with termination
+                    - Filters that needs a backend of type Service, like Mirror and External Authorization
 
-                  * Implementation-Specific: Services not connected via HTTPRoute, and any
-                    other kind of backend. Implementations MAY use BackendTLSPolicy for:
+                  * Implementation-Specific: Implementations MAY use BackendTLSPolicy for:
                     - Services not referenced by any Route (e.g., infrastructure services)
-                    - Gateway feature backends (e.g., ExternalAuth, rate-limiting services)
                     - Service mesh workload-to-service communication
                     - Other resource types beyond Service
 
@@ -1412,9 +1412,3 @@ spec:
     storage: false
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ''
-    plural: ''
-  conditions: null
-  storedVersions: null
