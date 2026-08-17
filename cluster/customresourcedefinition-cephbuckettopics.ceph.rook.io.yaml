@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-    noa.re/deploy-id: 5facaac310eef407
+    noa.re/deploy-id: fcc3ada228c96a8f
   name: cephbuckettopics.ceph.rook.io
 spec:
   group: ceph.rook.io
@@ -57,10 +57,14 @@ spec:
                     properties:
                       ackLevel:
                         default: broker
-                        description: The ack level required for this topic (none/broker/routeable)
+                        description: |-
+                          The ack level required for this topic (none/broker/routable). The misspelled value
+                          "routeable" is deprecated, is sent to the RGW as "routable", and will be removed in a
+                          future release.
                         enum:
                         - none
                         - broker
+                        - routable
                         - routeable
                         type: string
                       disableVerifySSL:
