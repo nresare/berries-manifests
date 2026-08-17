@@ -6,9 +6,11 @@ metadata:
     app.kubernetes.io/component: nats
     app.kubernetes.io/instance: nats
     app.kubernetes.io/name: nats
-    app.kubernetes.io/version: 2.14.2
+    app.kubernetes.io/version: 2.14.4
   name: nats
   namespace: nats
+  annotations:
+    noa.re/deploy-id: d91b0df86f609ff7
 spec:
   podManagementPolicy: Parallel
   replicas: 3
@@ -25,7 +27,7 @@ spec:
         app.kubernetes.io/component: nats
         app.kubernetes.io/instance: nats
         app.kubernetes.io/name: nats
-        app.kubernetes.io/version: 2.14.2
+        app.kubernetes.io/version: 2.14.4
     spec:
       containers:
       - args:
@@ -38,7 +40,7 @@ spec:
               fieldPath: metadata.name
         - name: SERVER_NAME
           value: $(POD_NAME)
-        image: nats:2.14.2-alpine
+        image: nats:2.14.4-alpine
         lifecycle:
           preStop:
             exec:
