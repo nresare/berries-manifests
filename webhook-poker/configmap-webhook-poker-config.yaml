@@ -5,7 +5,7 @@ metadata:
   name: webhook-poker-config
   namespace: webhook-poker
   annotations:
-    noa.re/deploy-id: e2ec7224de2cf307
+    noa.re/deploy-id: f7e16b098d4d7bf0
 data:
   webhook-poker.toml: |
     listen = "0.0.0.0"
@@ -15,7 +15,7 @@ data:
     [nats]
     servers = ["nats://nats.nats.svc"]
     name = "webhook-poker"  # client name shown in NATS server connection listings
-    token-path = "/var/run/secrets/tokens"
+    token-path = "/var/run/secrets/tokens/nats"
 
     [[target]]
     name = "berries"

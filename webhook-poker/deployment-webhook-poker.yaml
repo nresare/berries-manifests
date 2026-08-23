@@ -7,7 +7,7 @@ metadata:
     app: webhook-poker
   namespace: webhook-poker
   annotations:
-    noa.re/deploy-id: e2ec7224de2cf307
+    noa.re/deploy-id: f7e16b098d4d7bf0
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
       labels:
         app: webhook-poker
       annotations:
-        checksum/config: b4aa7bdf019a94a2e4188b98271c04429c64f1fe3b22b4f87e365851de5a7b30
+        checksum/config: ec0db4f5c6bac971f6b55229b7c3aa7603ea2ba6518952bdbbe6c49a171ac864
     spec:
       containers:
       - name: webhook-poker
