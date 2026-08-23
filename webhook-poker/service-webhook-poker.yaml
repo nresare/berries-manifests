@@ -1,0 +1,14 @@
+# Source: webhook-poker
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook-poker
+  namespace: webhook-poker
+spec:
+  type: ClusterIP
+  selector:
+    app: webhook-poker
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
