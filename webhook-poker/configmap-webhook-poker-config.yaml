@@ -4,8 +4,10 @@ kind: ConfigMap
 metadata:
   name: webhook-poker-config
   namespace: webhook-poker
+  annotations:
+    noa.re/deploy-id: e2ec7224de2cf307
 data:
-  webhook-poker: |
+  webhook-poker.toml: |
     listen = "0.0.0.0"
     port = 8080
     log-level = "INFO"
