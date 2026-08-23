@@ -7,8 +7,10 @@ metadata:
     app.kubernetes.io/name: mimir
     app.kubernetes.io/instance: mimir
     app.kubernetes.io/component: overrides-exporter
-    app.kubernetes.io/version: 3.1.2
+    app.kubernetes.io/version: 3.2.0
   namespace: mimir
+  annotations:
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 spec:
   type: ClusterIP
   internalTrafficPolicy: Cluster

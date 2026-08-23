@@ -7,7 +7,9 @@ metadata:
   labels:
     app.kubernetes.io/name: rollout-operator
     app.kubernetes.io/instance: mimir
-    app.kubernetes.io/version: v0.38.0
+    app.kubernetes.io/version: v0.38.1
+  annotations:
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -43,7 +45,7 @@ spec:
             drop:
             - ALL
           readOnlyRootFilesystem: true
-        image: docker.io/grafana/rollout-operator:v0.38.0
+        image: docker.io/grafana/rollout-operator:v0.38.1
         imagePullPolicy: IfNotPresent
         args:
         - -kubernetes.namespace=mimir

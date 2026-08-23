@@ -8,9 +8,9 @@ metadata:
     grafana.com/namespace: mimir
     app.kubernetes.io/name: rollout-operator
     app.kubernetes.io/instance: mimir
-    app.kubernetes.io/version: v0.38.0
+    app.kubernetes.io/version: v0.38.1
   annotations:
-    noa.re/deploy-id: 1e5348c42a6ce437
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 webhooks:
 - name: prepare-downscale-mimir.grafana.com
   clientConfig:

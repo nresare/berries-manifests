@@ -7,10 +7,10 @@ metadata:
     app.kubernetes.io/name: mimir
     app.kubernetes.io/instance: mimir
     app.kubernetes.io/component: query-frontend
-    app.kubernetes.io/version: 3.1.2
+    app.kubernetes.io/version: 3.2.0
   namespace: mimir
   annotations:
-    noa.re/deploy-id: 30198252cd9f2f9c
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 spec:
   replicas: 1
   selector:
@@ -28,10 +28,10 @@ spec:
       labels:
         app.kubernetes.io/name: mimir
         app.kubernetes.io/instance: mimir
-        app.kubernetes.io/version: 3.1.2
+        app.kubernetes.io/version: 3.2.0
         app.kubernetes.io/component: query-frontend
       annotations:
-        checksum/config: ca3fa0223d534209d9b95f89006443c17225f9dec9a24a94a7b3b44c23d160d3
+        checksum/config: 578ac0aa5b1ce000dfab83e5aa19e410f5a9de7730e66cce82a561435bd1b5c8
       namespace: mimir
     spec:
       serviceAccountName: mimir
@@ -44,7 +44,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: query-frontend
-        image: docker.io/grafana/mimir:3.1.2
+        image: docker.io/grafana/mimir:3.2.0
         imagePullPolicy: IfNotPresent
         args:
         - -target=query-frontend

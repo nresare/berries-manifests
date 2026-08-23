@@ -6,10 +6,10 @@ metadata:
   labels:
     app.kubernetes.io/name: mimir
     app.kubernetes.io/instance: mimir
-    app.kubernetes.io/version: 3.1.2
+    app.kubernetes.io/version: 3.2.0
   namespace: mimir
   annotations:
-    noa.re/deploy-id: 30198252cd9f2f9c
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 data:
   mimir.yaml: |2
 
@@ -95,7 +95,7 @@ data:
       join_members:
       - dns+mimir-gossip-ring.mimir.svc.cluster.local.:7946
     querier:
-      max_concurrent: 16
+      max_concurrent: 8
     query_scheduler:
       max_outstanding_requests_per_tenant: 800
     ruler:

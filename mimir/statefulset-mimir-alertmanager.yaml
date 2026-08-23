@@ -8,10 +8,10 @@ metadata:
     app.kubernetes.io/instance: mimir
     app.kubernetes.io/component: alertmanager
     app.kubernetes.io/part-of: memberlist
-    app.kubernetes.io/version: 3.1.2
+    app.kubernetes.io/version: 3.2.0
   namespace: mimir
   annotations:
-    noa.re/deploy-id: 30198252cd9f2f9c
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 spec:
   replicas: 1
   selector:
@@ -38,12 +38,12 @@ spec:
       labels:
         app.kubernetes.io/name: mimir
         app.kubernetes.io/instance: mimir
-        app.kubernetes.io/version: 3.1.2
+        app.kubernetes.io/version: 3.2.0
         app.kubernetes.io/component: alertmanager
         app.kubernetes.io/part-of: memberlist
       annotations:
-        checksum/config: ca3fa0223d534209d9b95f89006443c17225f9dec9a24a94a7b3b44c23d160d3
-        checksum/alertmanager-fallback-config: dd58832d251f465490ee4f1da92af4f0df7ad38331c87e55451cbd78936df760
+        checksum/config: 578ac0aa5b1ce000dfab83e5aa19e410f5a9de7730e66cce82a561435bd1b5c8
+        checksum/alertmanager-fallback-config: 65c723978f4c311b8d5fb8a1e332334a6e9f3cfb9c0208c6e37173da93a8a958
       namespace: mimir
     spec:
       serviceAccountName: mimir
@@ -90,7 +90,7 @@ spec:
               path: sts.amazonaws.com
       containers:
       - name: alertmanager
-        image: docker.io/grafana/mimir:3.1.2
+        image: docker.io/grafana/mimir:3.2.0
         imagePullPolicy: IfNotPresent
         args:
         - -target=alertmanager

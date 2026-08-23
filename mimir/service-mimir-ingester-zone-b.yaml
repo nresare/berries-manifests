@@ -8,11 +8,13 @@ metadata:
     app.kubernetes.io/instance: mimir
     app.kubernetes.io/component: ingester
     app.kubernetes.io/part-of: memberlist
-    app.kubernetes.io/version: 3.1.2
+    app.kubernetes.io/version: 3.2.0
     name: ingester-zone-b
     rollout-group: ingester
     zone: zone-b
   namespace: mimir
+  annotations:
+    noa.re/deploy-id: 1ff4fbba94cc2a6f
 spec:
   type: ClusterIP
   internalTrafficPolicy: Cluster
