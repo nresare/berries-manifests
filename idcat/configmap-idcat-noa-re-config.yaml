@@ -5,7 +5,7 @@ metadata:
   name: idcat-noa-re-config
   namespace: idcat
   annotations:
-    noa.re/deploy-id: e403cbd5d593dc52
+    noa.re/deploy-id: b707b09aba3c618e
 data:
   idcat.toml: |
     bind-address = "0.0.0.0:8080"
@@ -38,4 +38,5 @@ data:
 
     [nats]
     endpoint = "nats://nats.nats.svc"
+    subject-base = "idcat.github.events"
     token-path = "/var/run/secrets/tokens/nats"
