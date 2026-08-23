@@ -5,11 +5,12 @@ metadata:
   name: relcoord-noa-re-config
   namespace: relcoord
   annotations:
-    noa.re/deploy-id: 00ee1cf77d245aff
+    noa.re/deploy-id: 430309dc6a86dec2
 data:
   relcoord.toml: |
     listen = "0.0.0.0"
     port = 8080
+    system-repository = "https://github.com/nresare/berries-config"
 
     [persistence]
     uri = "ws://surrealdb.surrealdb.svc:8000"
