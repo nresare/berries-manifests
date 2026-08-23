@@ -7,7 +7,7 @@ metadata:
     app: idcat-noa-re
   namespace: idcat
   annotations:
-    noa.re/deploy-id: e6209202bed8d612
+    noa.re/deploy-id: e403cbd5d593dc52
 spec:
   replicas: 2
   selector:
@@ -18,11 +18,11 @@ spec:
       labels:
         app: idcat-noa-re
       annotations:
-        checksum/config: de13b7bdd5d534084f3ccb1811d0e423a6e4c64be54f9f4a867c44083d5f2865
+        checksum/config: 83db70c705fc631d751746b30a7d18dd2cc8cc0a4a6f725afcdd3a85073c1287
     spec:
       containers:
       - name: idcat-noa-re
-        image: repo.noa.re/idcat:0.2.1-2ac13f43
+        image: repo.noa.re/idcat:0.2.1-9b94cec7
         args:
         - --debug
         livenessProbe:
@@ -34,6 +34,9 @@ spec:
           mountPath: /config
         - name: app-keys
           mountPath: /app-keys
+        - name: tokens
+          mountPath: /var/run/secrets/tokens
+          readOnly: true
       volumes:
       - name: idcat-noa-re-config
         configMap:
@@ -41,3 +44,10 @@ spec:
       - name: app-keys
         secret:
           secretName: app-keys
+      - name: tokens
+        projected:
+          sources:
+          - serviceAccountToken:
+              path: nats
+              expirationSeconds: 3600
+              audience: nats

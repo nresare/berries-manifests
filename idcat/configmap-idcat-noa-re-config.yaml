@@ -4,6 +4,8 @@ kind: ConfigMap
 metadata:
   name: idcat-noa-re-config
   namespace: idcat
+  annotations:
+    noa.re/deploy-id: e403cbd5d593dc52
 data:
   idcat.toml: |
     bind-address = "0.0.0.0:8080"
@@ -32,3 +34,8 @@ data:
     allowed-roles = ["buildkite", "relcoord", "manual"]
     app-id = 3511383
     secret-key = "nresare-buildsystem.key"
+    webhook-target = "nats"
+
+    [nats]
+    endpoint = "nats://nats.nats.svc"
+    token-path = "/var/run/secrets/tokens/nats"
