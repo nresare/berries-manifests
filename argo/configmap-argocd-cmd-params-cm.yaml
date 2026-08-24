@@ -11,14 +11,13 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/version: v3.5.1
   annotations:
-    noa.re/deploy-id: f65d1aa5953727df
+    noa.re/deploy-id: 61d22ff2943ac190
 data:
   applicationsetcontroller.enable.leader.election: 'false'
   applicationsetcontroller.log.format: text
   applicationsetcontroller.log.level: info
   commitserver.log.format: text
   commitserver.log.level: info
-  controller.diff.server.side: 'true'
   controller.log.format: text
   controller.log.level: info
   dexserver.log.format: text
