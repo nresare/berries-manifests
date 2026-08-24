@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-    noa.re/deploy-id: e33d103e4808d33a
+    noa.re/deploy-id: 35065878276cdf03
   name: cephnfses.ceph.rook.io
 spec:
   group: ceph.rook.io
@@ -2115,6 +2115,13 @@ spec:
                           Generation `0` indicates that keys existed prior to the implementation of key tracking.
                         format: int32
                         type: integer
+                      keyType:
+                        description: |-
+                          KeyType identifies the CephX key type for the current generation's keys, if known.
+                          If unknown, the value will be empty.
+                        maxLength: 7
+                        minLength: 3
+                        type: string
                     type: object
                 type: object
               conditions:
