@@ -7,10 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/name: alloy
     app.kubernetes.io/instance: alloy
-    app.kubernetes.io/version: v1.18.0
+    app.kubernetes.io/version: v1.19.2
     app.kubernetes.io/part-of: alloy
   annotations:
-    noa.re/deploy-id: a672773e7c6a45d0
+    noa.re/deploy-id: f7d19a8671356b08
 spec:
   replicas: 1
   minReadySeconds: 10
@@ -30,7 +30,7 @@ spec:
       serviceAccountName: alloy
       containers:
       - name: alloy
-        image: docker.io/grafana/alloy:v1.18.0
+        image: docker.io/grafana/alloy:v1.19.2
         imagePullPolicy: IfNotPresent
         args:
         - run
@@ -76,6 +76,17 @@ spec:
           requests:
             cpu: 10m
             memory: 50Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsGroup: 65534
+          runAsNonRoot: true
+          runAsUser: 65534
+          seccompProfile:
+            type: RuntimeDefault
       dnsPolicy: ClusterFirst
       volumes:
       - name: config
