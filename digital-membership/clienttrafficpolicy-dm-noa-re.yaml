@@ -1,0 +1,20 @@
+# Source: dm.noa.re
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: ClientTrafficPolicy
+metadata:
+  name: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: 709741ea00f94274
+spec:
+  http3: {}
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: dm-noa-re
+  tls:
+    ecdhCurves:
+    - X25519MLKEM768
+    - X25519
+    - P-256
+    minVersion: '1.3'

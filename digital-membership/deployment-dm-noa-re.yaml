@@ -7,7 +7,7 @@ metadata:
     app: dm-noa-re
   namespace: digital-membership
   annotations:
-    noa.re/deploy-id: 022d0622350c9cfb
+    noa.re/deploy-id: 709741ea00f94274
 spec:
   replicas: 2
   selector:
@@ -22,10 +22,11 @@ spec:
     spec:
       containers:
       - name: dm-noa-re
-        image: repo.noa.re/digital-membership:0.1.0-504a4184
-        ports:
-        - name: http
-          containerPort: 8080
+        image: repo.noa.re/digital-membership:0.1.0-10e010e8
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
         volumeMounts:
         - name: dm-noa-re-config
           mountPath: /config

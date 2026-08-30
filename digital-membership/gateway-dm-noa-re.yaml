@@ -1,0 +1,20 @@
+# Source: dm.noa.re
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: 709741ea00f94274
+spec:
+  gatewayClassName: eg
+  listeners:
+  - name: dm-noa-re
+    protocol: HTTPS
+    hostname: dm.noa.re
+    port: 443
+    tls:
+      certificateRefs:
+      - name: dm-noa-re-tls
+        group: ''
+        kind: Secret

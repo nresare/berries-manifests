@@ -1,0 +1,26 @@
+# Source: dm.noa.re
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: 709741ea00f94274
+spec:
+  parentRefs:
+  - name: dm-noa-re
+    group: gateway.networking.k8s.io
+    kind: Gateway
+  hostnames:
+  - dm.noa.re
+  rules:
+  - backendRefs:
+    - name: dm-noa-re
+      port: 80
+      group: ''
+      kind: Service
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /

@@ -1,0 +1,18 @@
+# Source: dm.noa.re
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: 709741ea00f94274
+spec:
+  dnsNames:
+  - dm.noa.re
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: ECDSA
+    rotationPolicy: Always
+  secretName: dm-noa-re-tls

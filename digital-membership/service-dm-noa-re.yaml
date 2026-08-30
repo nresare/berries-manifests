@@ -5,12 +5,11 @@ metadata:
   name: dm-noa-re
   namespace: digital-membership
   annotations:
-    noa.re/deploy-id: ba7b3f0f778dc3cf
+    noa.re/deploy-id: 709741ea00f94274
 spec:
-  type: ClusterIP
   selector:
     app: dm-noa-re
   ports:
-  - name: http
+  - protocol: TCP
     port: 80
-    targetPort: http
+    targetPort: 8080
