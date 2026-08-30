@@ -1,0 +1,40 @@
+# Source: dm.noa.re
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dm-noa-re
+  labels:
+    app: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: ba7b3f0f778dc3cf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dm-noa-re
+  template:
+    metadata:
+      labels:
+        app: dm-noa-re
+      annotations:
+        checksum/config: 32e20eeb1564855fdf62043c91547efdc50bdf044eea225f60f0abf0ddcec60e
+    spec:
+      containers:
+      - name: dm-noa-re
+        image: repo.noa.re/digital-membership:0.1.0-dc39d5ae
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: dm-noa-re-config
+          mountPath: /config
+        - name: keys
+          mountPath: /keys
+      volumes:
+      - name: dm-noa-re-config
+        configMap:
+          name: dm-noa-re-config
+      - name: keys
+        secret:
+          secretName: keys

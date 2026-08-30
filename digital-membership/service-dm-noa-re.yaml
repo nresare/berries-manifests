@@ -1,0 +1,16 @@
+# Source: dm.noa.re
+apiVersion: v1
+kind: Service
+metadata:
+  name: dm-noa-re
+  namespace: digital-membership
+  annotations:
+    noa.re/deploy-id: ba7b3f0f778dc3cf
+spec:
+  type: ClusterIP
+  selector:
+    app: dm-noa-re
+  ports:
+  - name: http
+    port: 80
+    targetPort: http

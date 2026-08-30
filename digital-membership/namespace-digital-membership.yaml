@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: digital-membership
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
+    noa.re/deploy-id: ba7b3f0f778dc3cf
