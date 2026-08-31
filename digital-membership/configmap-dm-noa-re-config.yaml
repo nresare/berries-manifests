@@ -5,7 +5,7 @@ metadata:
   name: dm-noa-re-config
   namespace: digital-membership
   annotations:
-    noa.re/deploy-id: 022d0622350c9cfb
+    noa.re/deploy-id: 12f957b1b436bf16
 data:
   digital-membership.toml: |
     # Example configuration for digital-membership.
@@ -17,13 +17,14 @@ data:
 
     [[issuer]]
     id = "choir"
-    description = "Example Choral Society"
+    name = "Example Choir Society"
     signing_key_path = "/keys/choir.key"
     name_model = "/uk-0.1.1.ncmp.xz"
     flags = ["Sheet music group", "Party planners"]
 
     [[issuer]]
     id = "fairer"
-    description = "Make Southwark fairer action group"
+    name = "Make Southwark fairer"
+    description = "We change local politics"
     signing_key_path = "/keys/fairer.key"
     name_model = "/uk-0.1.1.ncmp.xz"
