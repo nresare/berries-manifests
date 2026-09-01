@@ -4,12 +4,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.21.0
-    noa.re/deploy-id: a952675dd1313924
+    noa.re/deploy-id: 999a918164f366b2
   name: grafananotificationpolicies.grafana.integreatly.org
 spec:
   group: grafana.integreatly.org
   names:
     categories:
+    - all
     - grafana-operator
     kind: GrafanaNotificationPolicy
     listKind: GrafanaNotificationPolicyList
@@ -116,7 +117,7 @@ spec:
               resyncPeriod:
                 description: How often the resource is synced, defaults to 10m0s if
                   not set
-                pattern: "^([0-9]+(\\.[0-9]+)?(ns|us|\xB5s|ms|s|m|h))+$"
+                pattern: ^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$
                 type: string
               route:
                 description: Routes for alerts to match against

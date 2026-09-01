@@ -4,12 +4,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.21.0
-    noa.re/deploy-id: a952675dd1313924
+    noa.re/deploy-id: 999a918164f366b2
   name: grafananotificationpolicyroutes.grafana.integreatly.org
 spec:
   group: grafana.integreatly.org
   names:
     categories:
+    - all
     - grafana-operator
     kind: GrafanaNotificationPolicyRoute
     listKind: GrafanaNotificationPolicyRouteList

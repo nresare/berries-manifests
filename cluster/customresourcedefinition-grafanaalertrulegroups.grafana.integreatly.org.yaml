@@ -4,12 +4,13 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.21.0
-    noa.re/deploy-id: a952675dd1313924
+    noa.re/deploy-id: 999a918164f366b2
   name: grafanaalertrulegroups.grafana.integreatly.org
 spec:
   group: grafana.integreatly.org
   names:
     categories:
+    - all
     - grafana-operator
     kind: GrafanaAlertRuleGroup
     listKind: GrafanaAlertRuleGroupList
@@ -128,7 +129,7 @@ spec:
                   rule: self == oldSelf
               interval:
                 format: duration
-                pattern: "^([0-9]+(\\.[0-9]+)?(ns|us|\xB5s|ms|s|m|h))+$"
+                pattern: ^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$
                 type: string
               name:
                 description: Name of the alert rule group. If not specified, the resource
@@ -137,7 +138,7 @@ spec:
               resyncPeriod:
                 description: How often the resource is synced, defaults to 10m0s if
                   not set
-                pattern: "^([0-9]+(\\.[0-9]+)?(ns|us|\xB5s|ms|s|m|h))+$"
+                pattern: ^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$
                 type: string
               rules:
                 items:
@@ -203,7 +204,7 @@ spec:
                       type: boolean
                     keepFiringFor:
                       format: duration
-                      pattern: "^([0-9]+(\\.[0-9]+)?(ns|us|\xB5s|ms|s|m|h))+$"
+                      pattern: ^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$
                       type: string
                     labels:
                       additionalProperties:
