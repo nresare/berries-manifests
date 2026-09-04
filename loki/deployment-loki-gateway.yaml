@@ -7,10 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/name: loki
     app.kubernetes.io/instance: loki
-    app.kubernetes.io/version: 3.7.6
+    app.kubernetes.io/version: 3.7.7
     app.kubernetes.io/component: gateway
   annotations:
-    noa.re/deploy-id: 395ac7bbfd02acd0
+    noa.re/deploy-id: ef43e148cbc7a5e1
 spec:
   replicas: 1
   strategy:
@@ -71,7 +71,7 @@ spec:
         - name: docker-entrypoint-d-override
           mountPath: /docker-entrypoint.d
       - name: exporter
-        image: ghcr.io/jkroepke/access-log-exporter:0.4.10
+        image: ghcr.io/jkroepke/access-log-exporter:0.4.12
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4040

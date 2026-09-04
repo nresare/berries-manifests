@@ -6,12 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: loki
     app.kubernetes.io/instance: loki
-    app.kubernetes.io/version: 3.7.6
+    app.kubernetes.io/version: 3.7.7
     app.kubernetes.io/component: memcached-chunks-cache
     name: memcached-chunks-cache
   namespace: loki
   annotations:
-    noa.re/deploy-id: 395ac7bbfd02acd0
+    noa.re/deploy-id: ef43e148cbc7a5e1
 spec:
   podManagementPolicy: Parallel
   replicas: 1
@@ -49,7 +49,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: memcached
-        image: memcached:1.6.45-alpine
+        image: docker.io/library/memcached:1.6.45-alpine
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -93,7 +93,7 @@ spec:
             port: client
           timeoutSeconds: 5
       - name: exporter
-        image: prom/memcached-exporter:v0.16.0
+        image: docker.io/prom/memcached-exporter:v0.17.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9150
