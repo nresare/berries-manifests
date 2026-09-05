@@ -7,7 +7,7 @@ metadata:
     app: dm-noa-re
   namespace: digital-membership
   annotations:
-    noa.re/deploy-id: 6e65001cb2fb206e
+    noa.re/deploy-id: c98be0a3de9cc0ba
 spec:
   replicas: 2
   selector:
@@ -18,11 +18,11 @@ spec:
       labels:
         app: dm-noa-re
       annotations:
-        checksum/config: b8252936169d44585f364b25c5dd2680db6552597f46425bbc206253cbe009f2
+        checksum/config: 66ff1c36f61c1d69adfc0125799129066e70d7e6c8fcfe6f705bc4013a56d144
     spec:
       containers:
       - name: dm-noa-re
-        image: repo.noa.re/digital-membership:0.1.0-b9a936e9
+        image: repo.noa.re/digital-membership:0.1.0-7113acd3
         livenessProbe:
           httpGet:
             path: /healthz
