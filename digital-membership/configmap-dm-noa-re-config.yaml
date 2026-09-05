@@ -5,7 +5,7 @@ metadata:
   name: dm-noa-re-config
   namespace: digital-membership
   annotations:
-    noa.re/deploy-id: c98be0a3de9cc0ba
+    noa.re/deploy-id: 9ed93a0527f9ab60
 data:
   digital-membership.toml: |
     # Example configuration for digital-membership.
@@ -29,7 +29,7 @@ data:
     signing_key_path = "/keys/fairer.key"
     name_model = "/uk-0.1.1.ncmp.xz"
 
-    [[wallet]]
+    [wallet]
     key_path = "/keys/wallet.key"
     cert_path = "/config/wallet-cert.pem"
   wallet-cert.pem: |
