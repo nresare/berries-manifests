@@ -7,7 +7,7 @@ metadata:
     app: demo-resare-com
   namespace: oidc-client-demo
   annotations:
-    noa.re/deploy-id: 441f17d5537b3ca7
+    noa.re/deploy-id: e2f46c3d625ae450
 spec:
   replicas: 2
   selector:
@@ -18,11 +18,11 @@ spec:
       labels:
         app: demo-resare-com
       annotations:
-        checksum/config: 86cf78da2a3ecaea05865da21de1e75216d363c1bc9d2b61c9725192d475069c
+        checksum/config: 82edec44e64efc89224e313198e388ff22651c13d7aebabf7a6144fdbca257f2
     spec:
       containers:
       - name: demo-resare-com
-        image: repo.noa.re/oidc-client-demo:0.1.0-cf7f3716
+        image: repo.noa.re/oidc-client-demo:0.1.0-389fedf3
         args:
         - -c
         - /config/config.toml
@@ -33,7 +33,12 @@ spec:
         volumeMounts:
         - name: demo-resare-com-config
           mountPath: /config
+        - name: random-secrets
+          mountPath: /random-secrets
       volumes:
       - name: demo-resare-com-config
         configMap:
           name: demo-resare-com-config
+      - name: random-secrets
+        secret:
+          secretName: demo-resare-com
