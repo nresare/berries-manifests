@@ -7,7 +7,7 @@ metadata:
     app: demo-resare-com
   namespace: oidc-client-demo
   annotations:
-    noa.re/deploy-id: e2f46c3d625ae450
+    noa.re/deploy-id: b0a2360ef37eaa1c
 spec:
   replicas: 2
   selector:
@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: demo-resare-com
-        image: repo.noa.re/oidc-client-demo:0.1.0-389fedf3
+        image: repo.noa.re/oidc-client-demo:0.1.0-2a4a148d
         args:
         - -c
         - /config/config.toml
