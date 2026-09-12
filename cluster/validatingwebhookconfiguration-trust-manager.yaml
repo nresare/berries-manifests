@@ -7,10 +7,10 @@ metadata:
     app: trust-manager
     app.kubernetes.io/name: trust-manager
     app.kubernetes.io/instance: trust-manager
-    app.kubernetes.io/version: v0.24.0
+    app.kubernetes.io/version: v0.25.0
   annotations:
-    cert-manager.io/inject-ca-from: cert-manager/trust-manager
-    noa.re/deploy-id: 9e3c05fb973dbc9b
+    cert-manager.io/inject-ca-from-secret: cert-manager/trust-manager-tls
+    noa.re/deploy-id: 824cadd59b9ad57a
 webhooks:
 - name: trust.cert-manager.io
   rules:

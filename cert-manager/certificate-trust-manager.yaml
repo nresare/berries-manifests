@@ -7,14 +7,17 @@ metadata:
   labels:
     app.kubernetes.io/name: trust-manager
     app.kubernetes.io/instance: trust-manager
-    app.kubernetes.io/version: v0.24.0
+    app.kubernetes.io/version: v0.25.0
   annotations:
-    noa.re/deploy-id: 9e3c05fb973dbc9b
+    noa.re/deploy-id: 824cadd59b9ad57a
 spec:
   commonName: trust-manager.cert-manager.svc
   dnsNames:
   - trust-manager.cert-manager.svc
   secretName: trust-manager-tls
+  secretTemplate:
+    annotations:
+      cert-manager.io/allow-direct-injection: 'true'
   privateKey:
     rotationPolicy: Always
   revisionHistoryLimit: 1
